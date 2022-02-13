@@ -13,11 +13,14 @@ app.use(cors());
 // app.use(express.urlencoded({ extended: false }));
 
 
-
 app.get('/', (req, res) => {
     res.send('HELLO FROM SERVER');
 });
 
+app.get('/api/locations', async (req, res) => {
+    const data = await DB.getAllLocations();
+    res.json(data);
+});
 
 
 // Server
