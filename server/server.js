@@ -1,29 +1,36 @@
-const cors = require('cors');
-const express = require('express');
-const env = require('dotenv');
+import cors from 'cors';
+import express, { urlencoded } from 'express';
+import { config } from 'dotenv';
+import path from 'path';
+import db from './config/Database.js';
+// import { getAllLocations } from './modules/db';
 
-// DB
-const DB = require('./modules/db');
-
-// run express
 const app = express();
+const PORT = process.env.PORT || 8080;
 
-env.config();
+config();
 app.use(cors());
-// app.use(express.urlencoded({ extended: false }));
+app.use(urlencoded({ extended: false }));
+
+try {
+    await db.authenticate();
+    console.log('Connection has been established successfully.');
+} catch (error) {
+    console.error('Unable to connect to the database:', error);
+}
 
 
 app.get('/', (req, res) => {
     res.send('HELLO FROM SERVER');
 });
 
-app.get('/api/locations', async (req, res) => {
-    const data = await DB.getAllLocations();
-    res.json(data);
-});
+// app.get('/api/locations', async (req, res) => {
+//     const data = await getAllLocations();
+//     res.json(data);
+// });
 
 
 // Server
-app.listen(process.env.PORT, () => {
-    console.log(`listening on port ${process.env.PORT}`)
+app.listen(PORT, () => {
+    console.log(`listening on port ${PORT}`)
 })
