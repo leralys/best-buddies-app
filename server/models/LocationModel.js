@@ -2,7 +2,6 @@ import { Sequelize } from 'sequelize';
 import db from '../config/Database.js';
 
 const { DataTypes } = Sequelize;
-import db from '../config/Database.js';
 
 
 // By default, when the table name is not given, Sequelize automatically pluralizes the model name
@@ -12,6 +11,11 @@ import db from '../config/Database.js';
 
 const Location = db.define('location', {
     // Model attributes are defined here
+    location_id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
     address: {
         type: DataTypes.STRING,
     },
@@ -25,7 +29,7 @@ const Location = db.define('location', {
         type: DataTypes.DOUBLE
     }
 }, {
-    // Other model options go here
+    timestamps: false
 });
 
 export default Location;
