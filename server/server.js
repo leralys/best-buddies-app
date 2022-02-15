@@ -1,8 +1,9 @@
 import cors from 'cors';
 import express, { urlencoded } from 'express';
 import { config } from 'dotenv';
-import path from 'path';
+// import path from 'path';
 import db from './config/Database.js';
+import locations from './routes/LocationsRoutes.js';
 // import { getAllLocations } from './modules/db';
 
 const app = express();
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 //     const data = await getAllLocations();
 //     res.json(data);
 // });
+app.use('/api/locations', locations);
 
 
 // Server
