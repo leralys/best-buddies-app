@@ -1,18 +1,15 @@
 import express from 'express';
-import Location from '../models/LocationModel.js';
+import locationController from '../controllers/LocationController.js';
+
 
 const router = express.Router();
-router.get('/', (req, res) => {
-    res.send('LOCATIONS API ROUTE')
-});
-router.get('/all', async (req, res) => {
-    try {
-        // Find all users
-        const locations = await Location.findAll();
-        res.json({ locations: locations });
-    } catch (e) {
-        console.log(e);
-    }
-});
+
+router.get('/', locationController.getAddresses);
+// router.get('/all', locationController.getLocations);
+router.get('/:city', locationController.getAddressesByCity);
+router.get('/spot/:id', locationController.getOneLocation);
+
 
 export default router;
+
+// http://localhost:8080/static/1.jpeg

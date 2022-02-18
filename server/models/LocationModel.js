@@ -10,7 +10,6 @@ const { DataTypes } = Sequelize;
 // Of course, this behavior is easily configurable.
 
 const Location = db.define('location', {
-    // Model attributes are defined here
     location_id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -27,7 +26,19 @@ const Location = db.define('location', {
     },
     lng: {
         type: DataTypes.DOUBLE
-    }
+    },
+    facilities: {
+        type: DataTypes.ARRAY(DataTypes.STRING)
+    },
+    description: {
+        type: DataTypes.STRING,
+    },
+    rate: {
+        type: DataTypes.INTEGER,
+    },
+    hours: {
+        type: DataTypes.ARRAY(DataTypes.STRING)
+    },
 }, {
     timestamps: false
 });

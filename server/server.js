@@ -1,17 +1,21 @@
 import cors from 'cors';
-import express, { urlencoded } from 'express';
 import { config } from 'dotenv';
-// import path from 'path';
+import express, { urlencoded } from 'express';
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+import path from 'path';
 import db from './config/Database.js';
 import locations from './routes/LocationsRoutes.js';
-// import { getAllLocations } from './modules/db';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 config();
 app.use(cors());
 app.use(urlencoded({ extended: false }));
+app.use(express.static('images'));
+app.use('/static', express.static(path.join(__dirname, 'images')));
 
 try {
     await db.authenticate();
@@ -20,19 +24,16 @@ try {
     console.error('Unable to connect to the database:', error);
 }
 
-
-app.get('/', (req, res) => {
-    res.send('HELLO FROM SERVER');
-});
-
-// app.get('/api/locations', async (req, res) => {
-//     const data = await getAllLocations();
-//     res.json(data);
-// });
 app.use('/api/locations', locations);
 
 
-// Server
+app.all('*', (req, res) => {
+    res.status(404).send('Page Not Found');
+})
+
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
 })
+
+// to use for images
+// http://localhost:8080/static/12.jpeg
