@@ -1,0 +1,14 @@
+.Search-dropdown {
+  list-style: none;
+  color: #464646;
+  border: 1px solid var(--color-dark-grey);
+  border-radius: 2px;
+  background-color: #fff;
+  margin-right: 1.5rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  width: 205px;
+}
+.Search-dropdown li {
+  margin-bottom: 0.5rem;
+}
