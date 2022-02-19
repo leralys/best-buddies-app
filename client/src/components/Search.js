@@ -5,8 +5,8 @@ import './Search.css';
 
 const Search = () => {
     const dispatch = useDispatch();
-    const addresses = useSelector(state => state.search.addresses);
-    const searchText = useSelector(state => state.search.searchText);
+    const locations = useSelector(state => state.locations.locations);
+    const searchText = useSelector(state => state.locations.searchText);
     const [expanded, setExpanded] = useState(false);
     const expand = () => {
         setExpanded(true);
@@ -15,9 +15,7 @@ const Search = () => {
         setExpanded(false);
     }
     // const opened = false;
-    useEffect(() => {
-        dispatch(actions.getAddresses());
-    }, [dispatch]);
+
     const handleChange = (e) => {
         dispatch(actions.changeSearch(e.target.value));
         expand();
@@ -29,8 +27,8 @@ const Search = () => {
         // dispatch(actions.clearSearchField());
     }
     let filtered;
-    if (addresses) {
-        filtered = addresses.filter(adr => {
+    if (locations) {
+        filtered = locations.filter(adr => {
             return adr.city.toLowerCase().includes(searchText.toLowerCase());
         })
     }

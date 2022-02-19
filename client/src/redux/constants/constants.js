@@ -1,5 +1,7 @@
-export const clearSearch = 'clearSearch';
+// export const clearSearch = 'clearSearch';
 export const changeSearchText = 'changeSearchText';
-export const getAddresses_pending = 'getAddresses_pending';
-export const getAddresses_success = 'getAddresses_success';
-export const getAddresses_error = 'getAddresses_error';
+export const fetchLocations_pending = 'fetchLocations_pending';
+export const fetchLocations_success = 'fetchLocations_success';
+export const fetchLocations_error = 'fetchLocations_error';
+
+export const setViewState = 'setViewState';

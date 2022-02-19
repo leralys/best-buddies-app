@@ -1,45 +1,45 @@
 import {
-    clearSearch,
+    // clearSearch,
     changeSearchText,
-    getAddresses_pending,
-    getAddresses_success,
-    getAddresses_error
+    fetchLocations_pending,
+    fetchLocations_success,
+    fetchLocations_error
 } from '../constants/constants.js';
 
 const initState = {
     searchText: '',
     loading: false,
-    addresses: undefined,
+    locations: undefined,
     error: ''
 }
 
-export const getAddresses = (state = initState, action = {}) => {
+export const locationsReducer = (state = initState, action = {}) => {
     switch (action.type) {
-        case clearSearch:
-            return {
-                ...state,
-                addresses: undefined,
-                loading: false,
-                error: ''
-            }
+        // case clearSearch:
+        //     return {
+        //         ...state,
+        //         addresses: undefined,
+        //         loading: false,
+        //         error: ''
+        //     }
         case changeSearchText:
             return {
                 ...state,
                 loading: false,
                 searchText: action.payload
             }
-        case getAddresses_pending:
+        case fetchLocations_pending:
             return {
                 ...state,
                 loading: true
             }
-        case getAddresses_success:
+        case fetchLocations_success:
             return {
                 ...state,
                 loading: false,
-                addresses: action.payload.locations
+                locations: action.payload.locations
             }
-        case getAddresses_error:
+        case fetchLocations_error:
             return {
                 ...state,
                 loading: false,

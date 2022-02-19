@@ -1,9 +1,9 @@
-import { getAddresses, clearSearchField, changeSearch } from './searchByCity';
+import { fetchLocations, changeSearch } from './fetchAndSearchReducer';
 
 const allActions = {
-    getAddresses,
-    // clearSearchField,
+    fetchLocations,
     changeSearch
+    // clearSearchField,
 }
 
 export default allActions;

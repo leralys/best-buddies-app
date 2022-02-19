@@ -14,6 +14,8 @@ code {
 
 :root {
   --color-dark-grey: #252525;
+  --color-map-red: #c64142;
+  --color-green: #8fc93a;
 }
 
 * {
@@ -21,3 +23,10 @@ code {
   padding: 0;
   box-sizing: border-box;
 }
+/*
+#1E91D6 light blue
+#0072BB dark blue
+#E8DB7D yellow
+#E1D89F sand
+#CAD49D pale green
+*/

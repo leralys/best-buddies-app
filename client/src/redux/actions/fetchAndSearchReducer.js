@@ -2,22 +2,23 @@ import axios from 'axios';
 import {
     // clearSearch,
     changeSearchText,
-    getAddresses_pending,
-    getAddresses_success,
-    getAddresses_error
+    fetchLocations_pending,
+    fetchLocations_success,
+    fetchLocations_error
 } from '../constants/constants.js';
 
-export const getAddresses = () => async (dispatch) => {
-    dispatch({ type: getAddresses_pending });
+
+export const fetchLocations = () => async (dispatch) => {
+    dispatch({ type: fetchLocations_pending });
     try {
         const res = await axios.get(`http://localhost:8080/api/locations/`);
         dispatch({
-            type: getAddresses_success,
+            type: fetchLocations_success,
             payload: res.data
         })
     } catch (err) {
         dispatch({
-            type: getAddresses_error,
+            type: fetchLocations_error,
             payload: console.log(err)
         })
     }

@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
-import { getAddresses } from './getAddressesReducer';
+import { locationsReducer } from './locationsReducer';
+import { mapStateReducer } from './mapStateReducer';
 
 export default combineReducers({
-    search: getAddresses
+    locations: locationsReducer,
+    map: mapStateReducer
 });

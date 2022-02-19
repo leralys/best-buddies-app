@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Home from './routes/Home';
 import Nav from './components/Nav';
-
+import 'mapbox-gl/dist/mapbox-gl.css';
 
 const App = () => {
   return (

@@ -1,4 +1,16 @@
 .Map-container {
   width: 600px;
   height: 400px;
+  margin: 50px;
+}
+
+.cluster-marker {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--color-map-red);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
