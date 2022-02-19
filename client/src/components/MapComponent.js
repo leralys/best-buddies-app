@@ -1,4 +1,4 @@
-import Map, { Marker, NavigationControl, GeolocateControl } from 'react-map-gl';
+import Map, { Marker, NavigationControl, GeolocateControl, Popup } from 'react-map-gl';
 import { useSelector } from 'react-redux';
 import { useState, useRef } from 'react';
 import useSupercluster from 'use-supercluster';
@@ -11,6 +11,8 @@ const MapComponent = () => {
         longitude: 34.78072420871621,
         zoom: 13
     });
+    // const [showPopup, setShowPopup] = useState(true);
+    const [selectedPark, setSelectedPark] = useState(null);
     const locations = useSelector(state => state.locations.locations);
     const mapRef = useRef();
     let points = [];
@@ -18,6 +20,8 @@ const MapComponent = () => {
         ? mapRef.current.getMap().getBounds().toArray().flat()
         : null;
     if (locations) {
+        // for supercluster library to work
+        // we must produce an array of GeoJSON Feature objects, with the geometry of each object being a GeoJSON Point
         points = locations.map(adr => ({
             type: 'Feature',
             properties: {
@@ -25,7 +29,7 @@ const MapComponent = () => {
                 pointId: adr.location_id,
             },
             geometry: {
-                type: "Point",
+                type: 'Point',
                 coordinates: [
                     adr.lng,
                     adr.lat
@@ -33,13 +37,19 @@ const MapComponent = () => {
             }
         }));
     }
+    // for supercluster to return the clusters based on the array of points, we need to provide it with the map bounds
+    // and the map zoom
     const { clusters, supercluster } = useSupercluster({
         points,
         bounds,
         zoom: viewState.zoom,
         options: { radius: 50, maxZoom: 20 }
     });
-
+    console.log(clusters);
+    // finds an object in the arr of location objects by location_id
+    const findById = (id, arr) => {
+        return arr.find(obj => obj.location_id === id)
+    }
     return (
         <div className='Map-container'>
             <Map
@@ -57,10 +67,16 @@ const MapComponent = () => {
 
                 {locations && clusters.length < 1
                     ? locations.map(adr => {
-                        return <Marker longitude={adr.lng}
-                            latitude={adr.lat} anchor='bottom'
-                            key={adr.location_id}>
-                            <PetsIcon style={{ color: 'var(--color-map-red' }} />
+                        return <Marker
+                            longitude={adr.lng}
+                            latitude={adr.lat}
+                            anchor='bottom'
+                            key={adr.location_id}
+                        >
+                            <PetsIcon
+                                className='marker-icon'
+                                onClick={() => setSelectedPark(adr.location_id)}
+                            />
                         </Marker>
                     })
                     : clusters.map(cluster => {
@@ -103,10 +119,22 @@ const MapComponent = () => {
                             return <Marker longitude={lng}
                                 latitude={lat} anchor='bottom'
                                 key={cluster.properties.pointId}>
-                                <PetsIcon style={{ color: 'var(--color-map-red' }} />
+                                <PetsIcon
+                                    className='marker-icon'
+                                    onClick={() => setSelectedPark(cluster.properties.pointId)}
+                                />
                             </Marker>
                         }
                     })
+                }
+                {selectedPark &&
+                    <Popup longitude={findById(selectedPark, locations).lng}
+                        latitude={findById(selectedPark, locations).lat}
+                        anchor='bottom'
+                    >
+                        {findById(selectedPark, locations).address},
+                        {findById(selectedPark, locations).city}
+                    </Popup>
                 }
             </Map>
         </div>

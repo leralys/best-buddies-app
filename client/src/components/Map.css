@@ -14,3 +14,14 @@
   justify-content: center;
   align-items: center;
 }
+
+.marker-icon {
+  color: var(--color-map-red);
+  cursor: pointer;
+}
+
+.marker-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
