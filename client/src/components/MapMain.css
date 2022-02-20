@@ -2,7 +2,7 @@
   width: 90vw;
   max-height: 600px;
   height: 50vh;
-  margin: 50px;
+  margin: 0 auto;
 }
 
 .cluster-marker {
@@ -27,7 +27,7 @@
   cursor: pointer;
 }
 .popup-content {
-  margin: 10px;
+  margin: 0.5rem 0.5rem 0rem 0.2rem;
   display: flex;
   flex-direction: column;
   flex-wrap: nowrap;

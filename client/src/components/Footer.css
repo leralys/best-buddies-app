@@ -1,0 +1,17 @@
+.Footer {
+  background-color: var(--color-dark-grey);
+  color: #fff;
+  padding: 3rem;
+}
+
+@media only screen and (max-width: 650px) {
+  .Footer {
+    line-height: 2;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .Footer {
+    padding: 1.8rem;
+  }
+}

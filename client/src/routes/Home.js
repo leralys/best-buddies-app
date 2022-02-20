@@ -1,21 +1,25 @@
-import MapComponent from '../components/MapComponent';
+// import { useDispatch } from 'react-redux';
+// import { useEffect } from 'react';
+// import actions from '../redux/actions/index';
+import MapMain from '../components/MapMain';
 import Search from '../components/Search';
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
-import actions from '../redux/actions/index';
+import Hero from '../components/Hero';
+import ContentWrapper from '../components/ContentWrapper';
 import './Home.css';
 
 const Home = () => {
-    const dispatch = useDispatch();
-    useEffect(() => {
-        dispatch(actions.fetchLocations());
-    }, [dispatch]);
-    return <div>
+    return (
         <>
-            <Search id='Home-search' />
-            <MapComponent />
+            <Hero />
+            <ContentWrapper>
+                <Search id='Home-search' />
+                {/* <MapMain /> */}
+                <br />
+                <br />
+                <br />
+            </ContentWrapper>
         </>
-    </div>
+    )
 }
 
 export default Home;

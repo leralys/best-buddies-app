@@ -1,29 +1,29 @@
 import {
-    fetchLocations_pending,
-    fetchLocations_success,
-    fetchLocations_error
+    fetchPark_pending,
+    fetchPark_success,
+    fetchPark_error
 } from '../constants/constants.js';
 
 const initState = {
     loading: false,
-    locations: undefined,
+    park: [],
     error: ''
 }
 
-export const locationsReducer = (state = initState, action = {}) => {
+export const getParkReducer = (state = initState, action = {}) => {
     switch (action.type) {
-        case fetchLocations_pending:
+        case fetchPark_pending:
             return {
                 ...state,
                 loading: true
             }
-        case fetchLocations_success:
+        case fetchPark_success:
             return {
                 ...state,
                 loading: false,
-                locations: action.payload.locations
+                park: action.payload.locations
             }
-        case fetchLocations_error:
+        case fetchPark_error:
             return {
                 ...state,
                 loading: false,

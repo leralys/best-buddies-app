@@ -3,10 +3,10 @@ import { useSelector } from 'react-redux';
 import { useState, useRef } from 'react';
 import useSupercluster from 'use-supercluster';
 import PetsIcon from '@mui/icons-material/Pets';
-import './Map.css';
+import './MapMain.css';
 
 
-const MapComponent = () => {
+const MapMain = () => {
     const [viewState, setViewState] = useState({
         latitude: 32.0861805437749,
         longitude: 34.80912838311763,
@@ -147,4 +147,4 @@ const MapComponent = () => {
     )
 }
 
-export default MapComponent;
+export default MapMain;
