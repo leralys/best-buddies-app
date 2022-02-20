@@ -25,3 +25,13 @@
   border: none;
   cursor: pointer;
 }
+.popup-content {
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  font-size: 1rem;
+}
+.mapboxgl-popup-close-button {
+  font-size: 1.5rem;
+}

@@ -11,7 +11,7 @@ const MapComponent = () => {
         longitude: 34.78072420871621,
         zoom: 13
     });
-    // const [showPopup, setShowPopup] = useState(true);
+    const [showPopup, setShowPopup] = useState(false);
     const [selectedPark, setSelectedPark] = useState(null);
     const locations = useSelector(state => state.locations.locations);
     const mapRef = useRef();
@@ -45,11 +45,12 @@ const MapComponent = () => {
         zoom: viewState.zoom,
         options: { radius: 50, maxZoom: 20 }
     });
-    console.log(clusters);
+    // console.log(clusters);
     // finds an object in the arr of location objects by location_id
     const findById = (id, arr) => {
         return arr.find(obj => obj.location_id === id)
     }
+    console.log(selectedPark);
     return (
         <div className='Map-container'>
             <Map
@@ -64,7 +65,22 @@ const MapComponent = () => {
             >
                 <NavigationControl />
                 <GeolocateControl />
+                {selectedPark &&
+                    <Popup longitude={findById(selectedPark, locations).lng}
+                        latitude={findById(selectedPark, locations).lat}
+                        anchor='bottom'
+                        closeButton={true}
+                        closeOnClick={false}
+                        onClose={() => setSelectedPark(null)}
+                    >
+                        <div className='popup-content'>
+                            <div>{findById(selectedPark, locations).address},</div>
+                            <div>{findById(selectedPark, locations).city}</div>
+                            <a href='#'>See the park's page</a>
+                        </div>
 
+                    </Popup>
+                }
                 {locations && clusters.length < 1
                     ? locations.map(adr => {
                         return <Marker
@@ -126,15 +142,6 @@ const MapComponent = () => {
                             </Marker>
                         }
                     })
-                }
-                {selectedPark &&
-                    <Popup longitude={findById(selectedPark, locations).lng}
-                        latitude={findById(selectedPark, locations).lat}
-                        anchor='bottom'
-                    >
-                        {findById(selectedPark, locations).address},
-                        {findById(selectedPark, locations).city}
-                    </Popup>
                 }
             </Map>
         </div>
