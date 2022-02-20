@@ -1,12 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
-import actions from '../redux/actions/index';
+// import actions from '../redux/actions/index';
 import './Search.css';
 
-const Search = () => {
-    const dispatch = useDispatch();
+const Search = (props) => {
     const locations = useSelector(state => state.locations.locations);
-    const searchText = useSelector(state => state.locations.searchText);
+    const [searchText, setSearchText] = useState('');
     const [expanded, setExpanded] = useState(false);
     const expand = () => {
         setExpanded(true);
@@ -14,17 +13,17 @@ const Search = () => {
     const close = () => {
         setExpanded(false);
     }
-    // const opened = false;
-
     const handleChange = (e) => {
-        dispatch(actions.changeSearch(e.target.value));
+        setSearchText(e.target.value);
         expand();
+        if (e.target.value === '') {
+            close();
+        }
     }
     const clickOutside = (e) => {
         e.target.value = '';
-        // dispatch(actions.clearSearchField());
+        setSearchText(e.target.value);
         close();
-        // dispatch(actions.clearSearchField());
     }
     let filtered;
     if (locations) {
@@ -33,17 +32,23 @@ const Search = () => {
         })
     }
     return (
-        <div>
-            <input type='text' onChange={handleChange}
+        <div id={props.id}>
+            <input
+                type='text'
+                onChange={(handleChange)}
                 onBlur={clickOutside}
-                style={{ position: 'relative' }}></input>
+                style={{ position: 'relative' }}
+                placeholder='Search city'
+            />
             {filtered && expanded ?
                 <ul className='Search-dropdown' style={{ position: 'absolute' }}>
                     {filtered.map(el => {
-                        return <li key={el.location_id}
-                            id={el.location_id}>
-                            {el.address}, {el.city}
-                        </li>
+                        return (
+                            <li key={el.location_id}
+                                id={el.location_id}>
+                                {el.address}, {el.city}
+                            </li>
+                        )
                     })}
                 </ul>
                 : null

@@ -1,6 +1,7 @@
 .Map-container {
-  width: 600px;
-  height: 400px;
+  width: 90vw;
+  max-height: 600px;
+  height: 50vh;
   margin: 50px;
 }
 

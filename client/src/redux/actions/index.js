@@ -1,9 +1,7 @@
-import { fetchLocations, changeSearch } from './fetchAndSearchReducer';
+import { fetchLocations } from './fetchLocations';
 
 const allActions = {
-    fetchLocations,
-    changeSearch
-    // clearSearchField,
+    fetchLocations
 }
 
 export default allActions;

@@ -8,7 +8,9 @@
   padding: 0.5rem;
   font-size: 0.9rem;
   width: 205px;
+  height: 300px;
   z-index: 10;
+  overflow: scroll;
 }
 .Search-dropdown li {
   margin-bottom: 0.5rem;

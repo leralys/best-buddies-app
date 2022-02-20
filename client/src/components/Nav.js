@@ -11,7 +11,7 @@ const Nav = () => {
             <AppBar position="static" style={{ backgroundColor: 'var(--color-dark-grey)' }}>
                 <Toolbar>
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1, pl: '2rem' }}>
-                        Friend Of A Friend
+                        Walk With Me
                     </Typography>
                     <Search />
                     <Button color="inherit">Login</Button>

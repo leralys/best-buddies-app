@@ -1,6 +1,4 @@
 import {
-    // clearSearch,
-    changeSearchText,
     fetchLocations_pending,
     fetchLocations_success,
     fetchLocations_error
@@ -15,19 +13,6 @@ const initState = {
 
 export const locationsReducer = (state = initState, action = {}) => {
     switch (action.type) {
-        // case clearSearch:
-        //     return {
-        //         ...state,
-        //         addresses: undefined,
-        //         loading: false,
-        //         error: ''
-        //     }
-        case changeSearchText:
-            return {
-                ...state,
-                loading: false,
-                searchText: action.payload
-            }
         case fetchLocations_pending:
             return {
                 ...state,

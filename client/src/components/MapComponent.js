@@ -5,10 +5,11 @@ import useSupercluster from 'use-supercluster';
 import PetsIcon from '@mui/icons-material/Pets';
 import './Map.css';
 
+
 const MapComponent = () => {
     const [viewState, setViewState] = useState({
-        latitude: 32.07851910922377,
-        longitude: 34.78072420871621,
+        latitude: 32.0861805437749,
+        longitude: 34.80912838311763,
         zoom: 13
     });
     const [showPopup, setShowPopup] = useState(false);
@@ -45,12 +46,10 @@ const MapComponent = () => {
         zoom: viewState.zoom,
         options: { radius: 50, maxZoom: 20 }
     });
-    // console.log(clusters);
     // finds an object in the arr of location objects by location_id
     const findById = (id, arr) => {
         return arr.find(obj => obj.location_id === id)
     }
-    console.log(selectedPark);
     return (
         <div className='Map-container'>
             <Map

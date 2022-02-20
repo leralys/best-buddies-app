@@ -1,7 +1,5 @@
 import axios from 'axios';
 import {
-    // clearSearch,
-    changeSearchText,
     fetchLocations_pending,
     fetchLocations_success,
     fetchLocations_error
@@ -19,20 +17,7 @@ export const fetchLocations = () => async (dispatch) => {
     } catch (err) {
         dispatch({
             type: fetchLocations_error,
-            payload: console.log(err)
+            payload: err
         })
-    }
-}
-
-// export const clearSearchField = () => {
-//     return {
-//         type: clearSearch
-//     }
-// }
-
-export const changeSearch = text => {
-    return {
-        type: changeSearchText,
-        payload: text
     }
 }
