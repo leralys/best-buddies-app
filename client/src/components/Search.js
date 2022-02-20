@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
-import actions from '../redux/actions/index';
-import { Link, useNavigate } from "react-router-dom";
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { IconButton, FormControl, OutlinedInput, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Search.css';
@@ -30,10 +29,6 @@ const Search = (props) => {
         setSearchText(e.target.value);
         close();
     }
-    const handleMouseDown = id => {
-        dispatch(actions.fetchPark(id));
-        navigate(`/${id}`)
-    }
     let filtered;
     if (locations) {
         filtered = locations.filter(adr => {
@@ -61,19 +56,19 @@ const Search = (props) => {
         //         </ul>
         //         : null
         //     }
-        // <IconButton aria-label="upload picture" component="span">
+        // <IconButton aria-label='upload picture' component='span'>
         //     <SearchIcon />
         // </IconButton>
         // </div>
-        <FormControl variant="outlined" id={props.id} className='Search-container'>
+        <FormControl variant='outlined' id={props.id} className='Search-container'>
             <OutlinedInput
                 type='text'
                 onChange={handleChange}
                 onBlur={clickOutside}
                 placeholder='Search city'
-                size="small"
+                size='small'
                 endAdornment={
-                    <InputAdornment position="end">
+                    <InputAdornment position='end'>
                         <SearchIcon />
                     </InputAdornment>
                 }
@@ -83,11 +78,8 @@ const Search = (props) => {
                     {filtered.map(el => {
                         return (
                             <li key={el.location_id}
-                                // onMouseDown={() => navigate(`/${el.location_id}`)}
-                                onMouseDown={() => handleMouseDown(el.location_id)}
-                                style={{ cursor: 'pointer', textDecoration: 'underline' }}
+                                onMouseDown={() => navigate(`/${el.location_id}`)}
                             >
-                                {/* <Link to={`/${el.location_id}`}>{el.address}, {el.city}</Link> */}
                                 {el.address}, {el.city}
                             </li>
                         )

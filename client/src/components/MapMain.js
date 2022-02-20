@@ -2,6 +2,7 @@ import Map, { Marker, NavigationControl, GeolocateControl, Popup } from 'react-m
 import { useSelector } from 'react-redux';
 import { useState, useRef } from 'react';
 import useSupercluster from 'use-supercluster';
+import { Link } from 'react-router-dom';
 import PetsIcon from '@mui/icons-material/Pets';
 import './MapMain.css';
 
@@ -12,7 +13,6 @@ const MapMain = () => {
         longitude: 34.80912838311763,
         zoom: 13
     });
-    const [showPopup, setShowPopup] = useState(false);
     const [selectedPark, setSelectedPark] = useState(null);
     const locations = useSelector(state => state.locations.locations);
     const mapRef = useRef();
@@ -75,7 +75,7 @@ const MapMain = () => {
                         <div className='popup-content'>
                             <div>{findById(selectedPark, locations).address},</div>
                             <div>{findById(selectedPark, locations).city}</div>
-                            <a href='#'>See the park's page</a>
+                            <Link to={`/${selectedPark}`}>See the park's page</Link>
                         </div>
 
                     </Popup>

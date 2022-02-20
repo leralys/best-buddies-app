@@ -1,6 +1,3 @@
-// import { useDispatch } from 'react-redux';
-// import { useEffect } from 'react';
-// import actions from '../redux/actions/index';
 import MapMain from '../components/MapMain';
 import Search from '../components/Search';
 import Hero from '../components/Hero';
@@ -13,7 +10,7 @@ const Home = () => {
             <Hero />
             <ContentWrapper>
                 <Search id='Home-search' />
-                {/* <MapMain /> */}
+                <MapMain />
                 <br />
                 <br />
                 <br />

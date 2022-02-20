@@ -13,7 +13,7 @@ const App = () => {
     dispatch(actions.fetchLocations());
   }, [dispatch]);
   return (
-    <div className="App">
+    <div className='App'>
       <Routes>
         <Route path='/' element={<Home />} title={'Home'} />
         <Route path='/:locationId' element={<ParkPage />} />

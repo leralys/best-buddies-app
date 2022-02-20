@@ -21,6 +21,7 @@
 }
 .Search-dropdown li {
   margin-bottom: 0.5rem;
+  cursor: pointer;
 }
 
 #Home-search {
