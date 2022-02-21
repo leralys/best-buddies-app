@@ -1,8 +1,5 @@
-import { Button } from '@mui/material';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Typography';
+import { Link } from "react-router-dom";
+import { Button, AppBar, Box, Toolbar, Typography } from '@mui/material';
 
 const Hero = () => {
     return (
@@ -11,7 +8,7 @@ const Hero = () => {
                 <AppBar position="static" style={{ backgroundColor: 'var(--color-green)' }}>
                     <Toolbar style={{ paddingRight: '5rem' }}>
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1, pl: '2rem' }}>
-                            Best Buddies
+                            <Link className='Nav-link' to={`/`}>Best Buddies</Link>
                         </Typography>
                         <Button color="inherit">Login</Button>
                     </Toolbar>

@@ -1,7 +1,7 @@
 import './ContentWrapper.css';
 
 const ContentWrapper = (props) => {
-    return <div className='Wrapper'>{props.children}</div>
+    return <main className='Wrapper'>{props.children}</main>
 }
 
 export default ContentWrapper;

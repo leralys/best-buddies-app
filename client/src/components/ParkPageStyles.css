@@ -1,0 +1,24 @@
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.col {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+.Park-header {
+  margin-bottom: 1rem;
+}
+
+.Park-section {
+  margin-bottom: 2rem;
+}
+
+.thumbs.animated {
+  display: flex;
+  justify-content: center;
+}
+.carousel-root {
+  width: 60vw;
+}

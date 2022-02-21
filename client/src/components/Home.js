@@ -1,8 +1,7 @@
-import MapMain from '../components/MapMain';
-import Search from '../components/Search';
-import Hero from '../components/Hero';
-import ContentWrapper from '../components/ContentWrapper';
-import './Home.css';
+import MapMain from './MapMain';
+import Search from './Search';
+import Hero from './Hero';
+import ContentWrapper from './ContentWrapper';
 
 const Home = () => {
     return (

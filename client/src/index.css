@@ -21,7 +21,7 @@ code {
   --color-blue-mui: #1975d1;
   --color-light-blue: #1e91d6;
   --color-sand: #e1d89f;
-  --color-yelow: #e8db7d;
+  --color-yelow: #faaf00;
 }
 
 * {
@@ -35,7 +35,12 @@ code {
   height: 100vh;
 }
 
-/* .page {
-  min-height: 80vh;
+a.Nav-link {
+  color: white;
+  text-decoration: none;
+}
+
+.page {
+  min-height: 85vh;
   padding-bottom: 2rem;
-} */
+}

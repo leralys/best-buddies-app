@@ -2,8 +2,8 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import actions from './redux/actions/index';
 import { Routes, Route } from 'react-router-dom';
-import Home from './routes/Home';
-import ParkPage from './routes/ParkPage';
+import Home from './components/Home';
+import ParkPage from './components/ParkPage';
 import Footer from './components/Footer';
 import 'mapbox-gl/dist/mapbox-gl.css';
 
