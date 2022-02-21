@@ -16,7 +16,7 @@ class LocationConroller {
     }
     async getAddresses(req, res) {
         const [data, error, status, msg] = await catchAsync(Location.findAll({
-            attributes: ['location_id', 'city', 'address'],
+            attributes: ['location_id', 'city', 'address', 'lat', 'lng'],
             order: [
                 ['address', 'ASC']
             ],

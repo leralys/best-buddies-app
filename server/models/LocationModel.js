@@ -39,6 +39,9 @@ const Location = db.define('location', {
     hours: {
         type: DataTypes.ARRAY(DataTypes.STRING)
     },
+    parking: {
+        type: DataTypes.BOOLEAN,
+    }
 }, {
     timestamps: false
 });
