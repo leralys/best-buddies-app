@@ -15,7 +15,7 @@ const Nav = () => {
                         <Link className='Nav-link' to={`/`}>Best Buddies</Link>
                     </Typography>
                     <Search />
-                    <Button color='inherit'>Login</Button>
+                    <Link className='Nav-link' to={`/login`}><Button color="inherit">Sign In</Button></Link>
                 </Toolbar>
             </AppBar>
         </Box>

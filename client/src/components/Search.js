@@ -9,7 +9,7 @@ const Search = (props) => {
     const locations = useSelector(state => state.locations.locations);
     const [searchText, setSearchText] = useState('');
     const [expanded, setExpanded] = useState(false);
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     const navigate = useNavigate();
     const expand = () => {
         setExpanded(true);

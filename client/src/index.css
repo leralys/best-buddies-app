@@ -44,3 +44,18 @@ a.Nav-link {
   min-height: 85vh;
   padding-bottom: 2rem;
 }
+.page-header {
+  margin-bottom: 1rem;
+}
+.page-section {
+  margin-bottom: 2rem;
+}
+.row {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.col {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}

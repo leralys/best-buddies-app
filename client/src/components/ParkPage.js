@@ -23,7 +23,7 @@ const ParkPage = (props) => {
         <div className='page'>
             <Nav />
             <main style={{ width: '90vw', margin: '3rem auto 1rem' }}>
-                <section className='row Park-section' style={{ justifyContent: 'space-between' }}>
+                <section className='row page-section' style={{ justifyContent: 'space-between' }}>
                     <div className='col'>
                         {park ?
                             <ParkDetailes />
@@ -33,7 +33,7 @@ const ParkPage = (props) => {
                     <div className='col'>
                         {park &&
                             <>
-                                <h2 className='Park-header'>Here right now:</h2>
+                                <h2 className='page-header'>Here right now:</h2>
                                 <ul>
                                     <li>User_1</li>
                                     <li>User_2</li>
@@ -44,11 +44,11 @@ const ParkPage = (props) => {
                         }
                     </div>
                 </section>
-                <section className='row Park-section' style={{ justifyContent: 'center' }}>
+                <section className='row page-section' style={{ justifyContent: 'center' }}>
                     <ParkCarousel />
                 </section>
                 {park &&
-                    <section className='row Park-section' style={{ justifyContent: 'space-around' }}>
+                    <section className='row page-section' style={{ justifyContent: 'space-around' }}>
                         <div className='col' style={{ width: '30vw' }}>
                             <h4 style={{ marginBottom: '0.5rem' }}>Facilities:</h4>
                             <ul>

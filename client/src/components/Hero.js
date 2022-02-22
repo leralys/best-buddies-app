@@ -10,7 +10,7 @@ const Hero = () => {
                         <Typography variant="h6" component="div" sx={{ flexGrow: 1, pl: '2rem' }}>
                             <Link className='Nav-link' to={`/`}>Best Buddies</Link>
                         </Typography>
-                        <Button color="inherit">Login</Button>
+                        <Link className='Nav-link' to={`/login`}><Button color="inherit">Sign In</Button></Link>
                     </Toolbar>
                 </AppBar>
             </Box>
@@ -20,7 +20,7 @@ const Hero = () => {
                     <br />
                     <h2 style={{ fontWeight: '500' }}>Want to make sure that your buddy won't be alone in the park?</h2>
                     <br />
-                    <h1 style={{ fontSize: '4rem' }}>Try Walk With Me!</h1>
+                    <h1 style={{ fontSize: '4rem' }}>Try Best Buddies App!</h1>
                     <br />
                     <h3 style={{ fontWeight: '400', fontStyle: 'italic', fontSize: '1.35rem' }}>
                         Revolutionary app that will change your life (at least we hope so).</h3>

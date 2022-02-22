@@ -1,0 +1,7 @@
+.Form {
+  border: 2px solid var(--color-blue-mui);
+  align-items: center;
+  padding: 1rem 1rem 0.5rem;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+}

@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import useSupercluster from 'use-supercluster';
 import { Link } from 'react-router-dom';
 import PetsIcon from '@mui/icons-material/Pets';
-import './MapMain.css';
+import './Map.css';
 
 
 const MapMain = () => {

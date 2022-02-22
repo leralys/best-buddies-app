@@ -5,16 +5,21 @@ import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton, Box } from '@mui/material';
 import { Button } from '@mui/material';
 import './ParkPageStyles.css';
+import PetsIcon from '@mui/icons-material/Pets';
+
 
 const ParkDetailes = () => {
     const park = useSelector(state => state.park.park[0]);
     const rate = [...Array(park.rate)].map((elem, i) => <StarIcon key={i} style={{ color: 'var(--color-yelow)' }} />);
     return (
         <>
-            <h2 className='Park-header'>{park.address}, {park.city}</h2>
+            <h2 className='page-header'>{park.address}, {park.city}</h2>
             <div className='row' style={{ width: '60vw' }}>
                 <div className='col' style={{ marginRight: '2rem' }}>
-                    <div style={{ background: 'green', width: '300px', height: '300px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>MAP</div>
+                    <div style={{ background: 'var(--color-green)', width: '300px', height: '300px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        {park.address}
+                        <PetsIcon className='marker-icon' />
+                    </div>
                 </div>
                 <div className='col' style={{ marginTop: '1rem', justifyContent: 'space-between' }}>
                     <div className='col'>
@@ -33,7 +38,7 @@ const ParkDetailes = () => {
                 </div>
             </div>
             <Box sx={{ display: 'inline-flex', mt: 2 }} style={{ alignItems: 'center', justifyContent: 'flex-start' }} >
-                <IconButton aria-label='upload picture' component='span'>
+                <IconButton aria-label='add to favorites' component='span'>
                     <FavoriteBorderIcon style={{ color: 'var(--color-map-red)' }} />
                 </IconButton>
                 <span>Add to Favorites</span>
