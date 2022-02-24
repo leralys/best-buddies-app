@@ -11,5 +11,3 @@ router.get('/spot/:id', locationController.getOneLocation);
 
 
 export default router;
-
-// http://localhost:8080/static/1.jpeg

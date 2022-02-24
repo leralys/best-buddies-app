@@ -3,7 +3,6 @@ import db from '../config/Database.js';
 
 const { DataTypes } = Sequelize;
 
-
 // By default, when the table name is not given, Sequelize automatically pluralizes the model name
 // and uses that as the table name. This pluralization is done under the hood by a library called inflection,
 // so that irregular plurals (such as person -> people) are computed correctly.
