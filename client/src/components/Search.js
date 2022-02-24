@@ -36,27 +36,7 @@ const Search = (props) => {
         })
     }
     return (
-        // <div id={props.id} className='Search-container'>
-        //     <input
-        //         type='text'
-        //         onChange={handleChange}
-        //         onBlur={clickOutside}
-        //         placeholder='Search city'
-        //     />
-        //     {filtered && expanded ?
-        //         <ul className='Search-dropdown'>
-        //             {filtered.map(el => {
-        //                 return (
-        //                     <li key={el.location_id}
-        //                         id={el.location_id}>
-        //                         {el.address}, {el.city}
-        //                     </li>
-        //                 )
-        //             })}
-        //         </ul>
-        //         : null
-        //     }
-        // <IconButton aria-label='upload picture' component='span'>
+        // <IconButton aria-label='search' component='span'>
         //     <SearchIcon />
         // </IconButton>
         // </div>
@@ -78,7 +58,7 @@ const Search = (props) => {
                     {filtered.map(el => {
                         return (
                             <li key={el.location_id}
-                                onMouseDown={() => navigate(`/${el.location_id}`)}
+                                onMouseDown={() => navigate(`/locations/${el.location_id}`)}
                             >
                                 {el.address}, {el.city}
                             </li>

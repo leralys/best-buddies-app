@@ -1,16 +1,17 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 import { Button, AppBar, Box, Toolbar, Typography } from '@mui/material';
 
 const Hero = () => {
     return (
         <>
             <Box sx={{ flexGrow: 1 }}>
-                <AppBar position="static" style={{ backgroundColor: 'var(--color-green)' }}>
+                <AppBar position='static' style={{ backgroundColor: 'var(--color-green)' }}>
                     <Toolbar style={{ paddingRight: '5rem' }}>
-                        <Typography variant="h6" component="div" sx={{ flexGrow: 1, pl: '2rem' }}>
+                        <Typography variant='h6' component='div' sx={{ flexGrow: 1, pl: '2rem' }}>
                             <Link className='Nav-link' to={`/`}>Best Buddies</Link>
                         </Typography>
-                        <Link className='Nav-link' to={`/login`}><Button color="inherit">Sign In</Button></Link>
+                        {/* <Link className='Nav-link' to={`/login`}><Button color='inherit'>Sign In</Button></Link> */}
+                        <Button component={Link} className='Nav-link' to={'/login'}>Sign In</Button>
                     </Toolbar>
                 </AppBar>
             </Box>
@@ -25,7 +26,9 @@ const Hero = () => {
                     <h3 style={{ fontWeight: '400', fontStyle: 'italic', fontSize: '1.35rem' }}>
                         Revolutionary app that will change your life (at least we hope so).</h3>
                     <br />
-                    <Button variant="contained" size="large" style={{ width: 'fit-content', marginTop: '1rem' }}>
+                    <Button variant='contained' size='large'
+                        component={Link} to={'/register'}
+                        style={{ width: 'fit-content', marginTop: '1rem' }}>
                         Try Now
                     </Button>
                 </div>

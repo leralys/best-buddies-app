@@ -5,20 +5,16 @@ import actions from '../redux/actions/index';
 import Nav from './Nav';
 import ParkDetailes from './ParkDetailes';
 import ParkCarousel from './ParkCarousel';
-import LocalParkingIcon from '@mui/icons-material/LocalParking';
+// import LocalParkingIcon from '@mui/icons-material/LocalParking';
 import './ParkPageStyles.css';
 
 const ParkPage = (props) => {
     let id = useParams().locationId;
-    // let rate;
     const dispatch = useDispatch();
     const park = useSelector(state => state.park.park[0])
     useEffect(() => {
         dispatch(actions.fetchPark(id));
-    }, [id]);
-    // if (park) {
-    //     rate = [...Array(park.rate)].map((elem, index) => <StarIcon style={{ color: 'var(--color-yelow)' }} />);
-    // }
+    }, [dispatch, id]);
     return (
         <div className='page'>
             <Nav />

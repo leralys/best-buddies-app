@@ -2,12 +2,16 @@ import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import actions from './redux/actions/index';
 import { Routes, Route } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 import Home from './components/Home';
 import ParkPage from './components/ParkPage';
 import Footer from './components/Footer';
 import Form from './components/LoginRegister';
 import UserPage from './components/UserPage';
+import NotFound from './components/NotFound';
+import { Auth } from './auth/Auth';
 import 'mapbox-gl/dist/mapbox-gl.css';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   const dispatch = useDispatch();
@@ -16,20 +20,28 @@ const App = () => {
   }, [dispatch]);
   return (
     <div className='App'>
+      <ToastContainer
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/:locationId' element={<ParkPage />} />
         <Route path='/login' element={<Form title={'Sign In'} />} />
         <Route path='/register' element={<Form title={'Register'} />} />
-        <Route path='/users/:userId' element={<UserPage title={'Username'} />} />
-        <Route
-          path='*' element={<main style={{ padding: '1rem' }}>
-            <p>Oops, there is nothing here... <span> 👀</span></p>
-          </main>} />
+        <Route path='/mypage' element={<Auth><UserPage /></Auth>} />
+        <Route path='/locations/:locationId' element={<ParkPage />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </div>
-  )
+  );
 }
 
 export default App;

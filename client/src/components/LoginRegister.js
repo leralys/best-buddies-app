@@ -1,38 +1,125 @@
+import jwt_decode from 'jwt-decode';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Button, Box, TextField, } from '@mui/material';
-import IconButton from '@mui/material/IconButton';
-import OutlinedInput from '@mui/material/OutlinedInput';
-import InputLabel from '@mui/material/InputLabel';
-import InputAdornment from '@mui/material/InputAdornment';
-import FormControl from '@mui/material/FormControl';
+import axios from 'axios';
+import {
+    Button,
+    Box,
+    TextField,
+    IconButton,
+    InputLabel,
+    OutlinedInput,
+    InputAdornment,
+    FormControl
+} from '@mui/material';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { toast } from 'react-toastify';
 import Nav from './Nav';
 import ContentWrapper from './ContentWrapper';
 import './LoginRegister.css';
+import { req } from '../assets/request';
 
 const Form = ({ title }) => {
     const [values, setValues] = useState({
         password: '',
+        email: '',
+        username: '',
         showPassword: false,
+        msg: ''
     });
-
+    const navigate = useNavigate();
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });
     };
-
     const handleClickShowPassword = () => {
         setValues({
             ...values,
             showPassword: !values.showPassword,
         });
     };
-
     const handleMouseDownPassword = (event) => {
         event.preventDefault();
     };
-    console.log(title)
+    const handleNavidation = () => {
+        setValues({
+            ...values,
+            email: '',
+            password: '',
+            username: '',
+            msg: ''
+        });
+    }
+    const handleAction = async (action) => {
+        if (action === 'Register') {
+            try {
+                let response = await axios.post(`${req}/register`, {
+                    username: values.username,
+                    email: values.email,
+                    password: values.password,
+                }, {
+                    withCredentials: true,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                setValues({
+                    ...values,
+                    username: '',
+                    email: '',
+                    password: '',
+                    msg: response.data.msg
+                });
+                toast.success(response.data.msg, {
+                    icon: '🐶'
+                });
+                navigate('/login');
+            }
+            catch (e) {
+                setValues({
+                    ...values,
+                    msg: e.response.data.msg,
+                    username: '',
+                    email: '',
+                    password: ''
+                });
+                toast.error(e.response.data.msg, {
+                    icon: '😳'
+                });
+            }
+        } else if (action === 'Sign In') {
+            try {
+                let response = await axios.post(`${req}/login`, {
+                    email: values.email,
+                    password: values.password,
+                }, {
+                    withCredentials: true,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                console.log('login response', response.data);
+                setValues({
+                    ...values,
+                    email: '',
+                    password: ''
+                });
+                navigate('/mypage');
+            } catch (e) {
+                setValues({
+                    ...values,
+                    email: '',
+                    password: '',
+                    msg: e.response.data.msg
+                });
+                toast.error(e.response.data.msg, {
+                    icon: '🥺'
+                });
+            }
+        }
+    }
     return (
         <>
             <Nav />
@@ -49,14 +136,18 @@ const Form = ({ title }) => {
                                 id='username'
                                 label='Username'
                                 type='text'
+                                value={values.username}
                                 sx={{ m: 1, width: '100%' }}
+                                onChange={handleChange('username')}
                             />
                         }
                         <TextField
                             id='email'
                             label='Email'
                             type='email'
+                            value={values.email}
                             sx={{ m: 1, width: '100%' }}
+                            onChange={handleChange('email')}
                         />
                         <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
                             <InputLabel htmlFor='password'>Password</InputLabel>
@@ -80,10 +171,17 @@ const Form = ({ title }) => {
                                 label='Password'
                             />
                         </FormControl>
-                        <Button variant='contained' sx={{ m: 1 }} style={{ width: 'fit-content' }}>
-                            Sign In
+                        <Button
+                            onClick={() => handleAction(title)}
+                            variant='contained' sx={{ m: 1 }}
+                            style={{ width: 'fit-content' }}>
+                            {title === 'Register'
+                                ? <>Register</>
+                                : <>Sign In</>
+                            }
                         </Button>
-                        <div style={{ marginTop: '0.5rem' }}>
+                        <div style={{ marginTop: '0.5rem' }}
+                            onMouseDown={handleNavidation}>
                             {title === 'Register'
                                 ? <Link to='/login'>Sign In</Link>
                                 : <>

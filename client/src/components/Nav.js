@@ -15,7 +15,8 @@ const Nav = () => {
                         <Link className='Nav-link' to={`/`}>Best Buddies</Link>
                     </Typography>
                     <Search />
-                    <Link className='Nav-link' to={`/login`}><Button color="inherit">Sign In</Button></Link>
+                    {/* <Link className='Nav-link' to={`/login`}><Button color="inherit">Sign In</Button></Link> */}
+                    <Button component={Link} className='Nav-link' to={`/login`}>Sign In</Button>
                 </Toolbar>
             </AppBar>
         </Box>

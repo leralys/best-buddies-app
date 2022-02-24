@@ -1,16 +1,37 @@
 import { useSelector } from 'react-redux';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
-import { IconButton, Box } from '@mui/material';
-import { Button } from '@mui/material';
+import { IconButton, Box, Button } from '@mui/material';
 import './ParkPageStyles.css';
 import PetsIcon from '@mui/icons-material/Pets';
-
+import { req } from '../assets/request';
 
 const ParkDetailes = () => {
     const park = useSelector(state => state.park.park[0]);
-    const rate = [...Array(park.rate)].map((elem, i) => <StarIcon key={i} style={{ color: 'var(--color-yelow)' }} />);
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const rate = [...Array(park.rate)].map((elem, i) => {
+        return <StarIcon key={i} style={{ color: 'var(--color-yelow)' }} />
+    });
+    useEffect(() => {
+        const verify = async () => {
+            try {
+                await axios.get(`${req}/token`, {
+                    withCredentials: true,
+                    headers: {
+                        'Access-Control-Allow-Origin': '*',
+                        'Content-Type': 'application/json'
+                    }
+                });
+                setIsLoggedIn(true);
+            } catch (e) {
+                setIsLoggedIn(false);
+            }
+        }
+        verify();
+    }, []);
     return (
         <>
             <h2 className='page-header'>{park.address}, {park.city}</h2>
@@ -32,16 +53,21 @@ const ParkDetailes = () => {
                             return <div key={i} style={{ marginTop: '0.5rem' }}>{el}</div>
                         })}
                     </div>
-                    <Button variant="contained" color="primary" sx={{ mb: 2 }}>
-                        Check In
-                    </Button>
+                    {isLoggedIn &&
+                        <Button variant="contained" color="primary" sx={{ mb: 2 }}>
+                            Check In
+                        </Button>
+                    }
                 </div>
             </div>
-            <Box sx={{ display: 'inline-flex', mt: 2 }} style={{ alignItems: 'center', justifyContent: 'flex-start' }} >
-                <IconButton aria-label='add to favorites' component='span'>
-                    <FavoriteBorderIcon style={{ color: 'var(--color-map-red)' }} />
-                </IconButton>
-                <span>Add to Favorites</span>
+            <Box sx={{ display: 'inline-flex', mt: 2 }}>
+                <Button style={{ color: 'var(--color-dark-grey)' }}
+                    onClick={() => console.log('add to favorites')}>
+                    <IconButton aria-label='add to favorites' component='span'>
+                        <FavoriteBorderIcon style={{ color: 'var(--color-map-red)' }} />
+                    </IconButton>
+                    Add to Favorites
+                </Button>
             </Box>
         </>
     )

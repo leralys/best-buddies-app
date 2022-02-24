@@ -75,7 +75,7 @@ const MapMain = () => {
                         <div className='popup-content'>
                             <div>{findById(selectedPark, locations).address},</div>
                             <div>{findById(selectedPark, locations).city}</div>
-                            <Link to={`/${selectedPark}`}>See the park's page</Link>
+                            <Link to={`/locations/${selectedPark}`}>See the park's page</Link>
                         </div>
 
                     </Popup>
