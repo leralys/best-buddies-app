@@ -1,17 +1,21 @@
+import { Suspense, lazy } from 'react';
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import actions from './redux/actions/index';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import Home from './components/Home';
-import ParkPage from './components/ParkPage';
+// import Home from './pages/Home';
+// import ParkPage from './pages/ParkPage';
+import UserPage from './pages/UserPage';
+import Form from './pages/LoginRegister';
+import NotFound from './pages/NotFound';
 import Footer from './components/Footer';
-import Form from './components/LoginRegister';
-import UserPage from './components/UserPage';
-import NotFound from './components/NotFound';
 import { Auth } from './auth/Auth';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-toastify/dist/ReactToastify.css';
+
+const Home = lazy(() => import('./pages/Home'));
+const ParkPage = lazy(() => import('./pages/ParkPage'));
 
 const App = () => {
   const dispatch = useDispatch();
@@ -31,14 +35,16 @@ const App = () => {
         draggable
         pauseOnHover
       />
-      <Routes>
-        <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Form title={'Sign In'} />} />
-        <Route path='/register' element={<Form title={'Register'} />} />
-        <Route path='/mypage' element={<Auth><UserPage /></Auth>} />
-        <Route path='/locations/:locationId' element={<ParkPage />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path='/' element={<Home title={'Home'} />} />
+          <Route path='/login' element={<Form title={'Sign In'} />} />
+          <Route path='/register' element={<Form title={'Register'} />} />
+          <Route path='/mypage' element={<Auth><UserPage /></Auth>} />
+          <Route path='/locations/:locationId' element={<ParkPage />} />
+          <Route path='*' element={<NotFound />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </div>
   );

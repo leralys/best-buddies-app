@@ -1,19 +1,54 @@
 import { useNavigate } from 'react-router-dom';
+// import { useEffect } from 'react';
 import axios from 'axios';
-import Nav from './Nav';
+import { useDispatch, useSelector } from 'react-redux';
+// import actions from '../redux/actions/index';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { IconButton, Box, Button } from '@mui/material';
-import { req } from '../assets/request';
-import randomNum from '../assets/randomNum';
+import Nav from '../components/Nav';
 import { toast } from 'react-toastify';
-
+import { url } from '../utilities/url';
+import randomNum from '../utilities/randomNum';
+// import verify from '../services/verify';
 
 const UserPage = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+    // const [isLoggedIn, setIsLoggedIn] = useState(false);
+    // const [username, setUsername] = useState('');
+    const username = useSelector(state => state.loggedIn.username);
+    // useEffect(() => {
+    // const verify = async () => {
+    //     try {
+    //         const res = await axios.get(`${url}/token`, {
+    //             withCredentials: true,
+    //             headers: {
+    //                 'Access-Control-Allow-Origin': '*',
+    //                 'Content-Type': 'application/json'
+    //             }
+    //         });
+    //         setIsLoggedIn(true);
+    //         setUsername(res.data.username);
+    //     } catch (e) {
+    //         setIsLoggedIn(false);
+    //     }
+    // }
+    // verify();
+    // verify()
+    //     .then(res => {
+    //         dispatch(actions.isLoggedIn({ status: true, username: res }));
+    // setIsLoggedIn(true)
+    // setUsername(res)
+    // })
+    // .catch(err => {
+    // setIsLoggedIn(false)
+    // dispatch(actions.isLoggedIn({ status: false, username: '' }));
+    //         })
+    // }, []);
     const logout = async () => {
         try {
-            await axios.delete(`${req}/logout`, {
+            await axios.delete(`${url}/users/logout`, {
                 withCredentials: true,
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -28,7 +63,7 @@ const UserPage = () => {
     }
     const deleteAcc = async () => {
         try {
-            await axios.delete(`${req}/delete`, {
+            await axios.delete(`${url}/users/delete`, {
                 withCredentials: true,
                 headers: {
                     'Access-Control-Allow-Origin': '*',
@@ -64,7 +99,7 @@ const UserPage = () => {
         <>
             <Nav />
             <main className='page' style={{ width: '90vw', margin: '3rem auto 1rem' }}>
-                <h2 className='page-header'>Hi, </h2>
+                <h2 className='page-header'>Hi, {username}</h2>
                 <div className='row' style={{ justifyContent: 'space-between' }}>
                     <section className='col' style={{ maxWidth: '300px' }}>
                         <img style={{ border: '1px solid var(--color-light-grey' }}
@@ -110,7 +145,8 @@ const UserPage = () => {
                 </div>
             </main>
         </>
-    )
+
+    );
 }
 
 export default UserPage;

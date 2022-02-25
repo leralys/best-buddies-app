@@ -1,4 +1,3 @@
-import jwt_decode from 'jwt-decode';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -15,10 +14,10 @@ import {
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { toast } from 'react-toastify';
-import Nav from './Nav';
-import ContentWrapper from './ContentWrapper';
+import Nav from '../components/Nav';
+import ContentWrapper from '../components/ContentWrapper';
+import { url } from '../utilities/url';
 import './LoginRegister.css';
-import { req } from '../assets/request';
 
 const Form = ({ title }) => {
     const [values, setValues] = useState({
@@ -53,7 +52,7 @@ const Form = ({ title }) => {
     const handleAction = async (action) => {
         if (action === 'Register') {
             try {
-                let response = await axios.post(`${req}/register`, {
+                let response = await axios.post(`${url}/users/register`, {
                     username: values.username,
                     email: values.email,
                     password: values.password,
@@ -90,7 +89,7 @@ const Form = ({ title }) => {
             }
         } else if (action === 'Sign In') {
             try {
-                let response = await axios.post(`${req}/login`, {
+                let response = await axios.post(`${url}/users/login`, {
                     email: values.email,
                     password: values.password,
                 }, {
@@ -100,7 +99,6 @@ const Form = ({ title }) => {
                         'Content-Type': 'application/json'
                     }
                 });
-                console.log('login response', response.data);
                 setValues({
                     ...values,
                     email: '',
@@ -194,7 +192,7 @@ const Form = ({ title }) => {
                 </ContentWrapper>
             </main>
         </>
-    )
+    );
 }
 
 export default Form;

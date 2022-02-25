@@ -1,6 +1,6 @@
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
-import randomNum from '../assets/randomNum';
+import randomNum from '../utilities/randomNum';
 
 const ParkCarousel = () => {
     return (
@@ -21,7 +21,7 @@ const ParkCarousel = () => {
                     alt='Dogs playing in a dog park' />
             </div>
         </Carousel>
-    )
+    );
 }
 
 export default ParkCarousel;

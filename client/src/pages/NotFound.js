@@ -1,5 +1,5 @@
-import Nav from './Nav';
-import ContentWrapper from './ContentWrapper';
+import Nav from '../components/Nav';
+import ContentWrapper from '../components/ContentWrapper';
 import notFound from '../assets/404.jpeg';
 
 const NotFound = () => {
@@ -12,7 +12,8 @@ const NotFound = () => {
                 </ContentWrapper>
             </main>
         </>
-    )
+
+    );
 }
 
 export default NotFound;

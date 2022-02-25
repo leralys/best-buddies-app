@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { IconButton, FormControl, OutlinedInput, InputAdornment } from '@mui/material';
@@ -9,7 +9,6 @@ const Search = (props) => {
     const locations = useSelector(state => state.locations.locations);
     const [searchText, setSearchText] = useState('');
     const [expanded, setExpanded] = useState(false);
-    // const dispatch = useDispatch();
     const navigate = useNavigate();
     const expand = () => {
         setExpanded(true);
@@ -68,7 +67,7 @@ const Search = (props) => {
                 : null
             }
         </FormControl>
-    )
+    );
 }
 
 export default Search;

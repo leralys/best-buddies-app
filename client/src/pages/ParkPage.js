@@ -2,41 +2,60 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import actions from '../redux/actions/index';
-import Nav from './Nav';
-import ParkDetailes from './ParkDetailes';
-import ParkCarousel from './ParkCarousel';
-// import LocalParkingIcon from '@mui/icons-material/LocalParking';
+// import verify from '../services/verify';
+import Nav from '../components/Nav';
+import ParkDetailes from '../components/ParkDetailes';
+import ParkCarousel from '../components/ParkCarousel';
+import CheckedIn from '../components/CheckedIn';
 import './ParkPageStyles.css';
+// import axios from 'axios';
+// import { url } from '../utilities/url';
 
-const ParkPage = (props) => {
+const ParkPage = () => {
     let id = useParams().locationId;
     const dispatch = useDispatch();
-    const park = useSelector(state => state.park.park[0])
+    const park = useSelector(state => state.park.park[0]);
+    const isLoggedIn = useSelector(state => state.loggedIn.loggedIn);
+    const checkedIn = useSelector(state => state.checkedIn.checkedIn);
     useEffect(() => {
         dispatch(actions.fetchPark(id));
+        dispatch(actions.fetchChekins(id));
+        // const verify = async () => {
+        //     try {
+        //         const res = await axios.get(`${url}/token`, {
+        //             withCredentials: true,
+        //             headers: {
+        //                 'Access-Control-Allow-Origin': '*',
+        //                 'Content-Type': 'application/json'
+        //             }
+        //         });
+        //         dispatch(actions.isLoggedIn({ status: true, username: res.data.username }));
+        //     } catch (e) {
+        //         dispatch(actions.isLoggedIn({ status: false, username: '' }));
+        //     }
+        // }
+        // verify();
+        // verify()
+        //     .then(res => {
+        //         dispatch(actions.isLoggedIn({ status: true, username: res }));
+        //     })
+        //     .catch(err => {
+        //         dispatch(actions.isLoggedIn({ status: false, username: '' }));
+        //     })
     }, [dispatch, id]);
     return (
-        <div className='page'>
+        <>
             <Nav />
-            <main style={{ width: '90vw', margin: '3rem auto 1rem' }}>
-                <section className='row page-section' style={{ justifyContent: 'space-between' }}>
+            <main className='page' style={{ width: '90vw', margin: '3rem auto 1rem' }}>
+                <section className='row page-section' style={{ justifyContent: 'space-evenly' }}>
                     <div className='col'>
-                        {park ?
+                        {park &&
                             <ParkDetailes />
-                            : <>Loading...</>
                         }
                     </div>
                     <div className='col'>
-                        {park &&
-                            <>
-                                <h2 className='page-header'>Here right now:</h2>
-                                <ul>
-                                    <li>User_1</li>
-                                    <li>User_2</li>
-                                    <li>User_3</li>
-                                    <li>User_4</li>
-                                </ul>
-                            </>
+                        {checkedIn.length > 0 &&
+                            <CheckedIn />
                         }
                     </div>
                 </section>
@@ -69,8 +88,8 @@ const ParkPage = (props) => {
                     </section>
                 }
             </main>
-        </div>
-    )
+        </>
+    );
 }
 
 export default ParkPage;

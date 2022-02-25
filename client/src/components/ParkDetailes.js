@@ -1,37 +1,23 @@
 import { useSelector } from 'react-redux';
-import { useState, useEffect } from 'react';
-import axios from 'axios';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import StarIcon from '@mui/icons-material/Star';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton, Box, Button } from '@mui/material';
-import './ParkPageStyles.css';
+import '../pages/ParkPageStyles.css';
 import PetsIcon from '@mui/icons-material/Pets';
-import { req } from '../assets/request';
+import actions from '../redux/actions';
 
 const ParkDetailes = () => {
     const park = useSelector(state => state.park.park[0]);
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const isLoggedIn = useSelector(state => state.loggedIn.loggedIn);
+    const username = useSelector(state => state.loggedIn.username);
     const rate = [...Array(park.rate)].map((elem, i) => {
         return <StarIcon key={i} style={{ color: 'var(--color-yelow)' }} />
     });
-    useEffect(() => {
-        const verify = async () => {
-            try {
-                await axios.get(`${req}/token`, {
-                    withCredentials: true,
-                    headers: {
-                        'Access-Control-Allow-Origin': '*',
-                        'Content-Type': 'application/json'
-                    }
-                });
-                setIsLoggedIn(true);
-            } catch (e) {
-                setIsLoggedIn(false);
-            }
-        }
-        verify();
-    }, []);
+    const checkin = () => {
+        console.log(username);
+        console.log(park.location_id);
+    }
     return (
         <>
             <h2 className='page-header'>{park.address}, {park.city}</h2>
@@ -39,7 +25,7 @@ const ParkDetailes = () => {
                 <div className='col' style={{ marginRight: '2rem' }}>
                     <div style={{ background: 'var(--color-green)', width: '300px', height: '300px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                         {park.address}
-                        <PetsIcon className='marker-icon' />
+                        <PetsIcon className='marker-icon' style={{ color: 'var(--color-map-red)' }} />
                     </div>
                 </div>
                 <div className='col' style={{ marginTop: '1rem', justifyContent: 'space-between' }}>
@@ -54,7 +40,10 @@ const ParkDetailes = () => {
                         })}
                     </div>
                     {isLoggedIn &&
-                        <Button variant="contained" color="primary" sx={{ mb: 2 }}>
+                        <Button variant='contained'
+                            onClick={checkin}
+                            color='primary'
+                            sx={{ mb: 2 }}>
                             Check In
                         </Button>
                     }
@@ -70,7 +59,7 @@ const ParkDetailes = () => {
                 </Button>
             </Box>
         </>
-    )
+    );
 }
 
 export default ParkDetailes;
