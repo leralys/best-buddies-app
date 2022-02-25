@@ -15,7 +15,8 @@ export const verifyToken = (req, res, next) => {
                     user_id: userId
                 }
             });
-            await next();
+            res.locals.username = user[0].username;
+            next();
         } catch (e) {
             return res.sendStatus(403);
         }

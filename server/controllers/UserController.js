@@ -20,6 +20,7 @@ class UserConroller {
         }
     }
     async login(req, res) {
+        // console.log(req.body.email, req.body.password);
         try {
             const user = await User.findAll({
                 where: {
@@ -39,22 +40,19 @@ class UserConroller {
             });
             res.json({ accessToken, username });
         } catch (e) {
-            console.log(e);
+            // console.log(e);
             res.status(401).json({ msg: 'Email not found' });
         }
     }
     async logout(req, res) {
-        // console.log(req.cookies);
         const accessToken = req.cookies.accessToken;
         if (!accessToken) return res.sendStatus(204);
         res.clearCookie('accessToken');
         return res.sendStatus(200);
     }
     async delete(req, res) {
-        // console.log(req.cookies);
         const accessToken = req.cookies.accessToken;
         if (!accessToken) return res.sendStatus(204);
-        // console.log(accessToken);
         const decoded = jwt.decode(accessToken);
         try {
             await User.destroy({
