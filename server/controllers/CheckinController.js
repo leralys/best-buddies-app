@@ -16,13 +16,16 @@ class CheckinController {
         try {
             const users = await Checkin.findAll({
                 attributes: ['username', 'createdat'],
+                order: [
+                    ['createdat', 'DESC']
+                ],
                 where: {
-                    // location_id: locationId
-                    location_id: locationId,
-                    createdAt: {
-                        [Op.lt]: new Date(),
-                        [Op.gt]: new Date(new Date() - 60 * 60 * 1000)
-                    }
+                    location_id: locationId
+                    // location_id: locationId,
+                    // createdAt: {
+                    //     [Op.lt]: new Date(),
+                    //     [Op.gt]: new Date(new Date() - 60 * 60 * 1000)
+                    // }
                 }
             });
             res.status(200).json({ users: users });
