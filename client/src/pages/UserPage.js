@@ -1,8 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-// import { useEffect } from 'react';
 import axios from 'axios';
-import { useDispatch, useSelector } from 'react-redux';
-// import actions from '../redux/actions/index';
+import { useSelector } from 'react-redux';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { IconButton, Box, Button } from '@mui/material';
@@ -10,42 +8,12 @@ import Nav from '../components/Nav';
 import { toast } from 'react-toastify';
 import { url } from '../utilities/url';
 import randomNum from '../utilities/randomNum';
-// import verify from '../services/verify';
 
 const UserPage = () => {
     const navigate = useNavigate();
-    const dispatch = useDispatch();
-    // const [isLoggedIn, setIsLoggedIn] = useState(false);
-    // const [username, setUsername] = useState('');
+    const isLoggedIn = useSelector(state => state.loggedIn.loggedIn);
+    const avatar = useSelector(state => state.loggedIn.avatar);
     const username = useSelector(state => state.loggedIn.username);
-    // useEffect(() => {
-    // const verify = async () => {
-    //     try {
-    //         const res = await axios.get(`${url}/token`, {
-    //             withCredentials: true,
-    //             headers: {
-    //                 'Access-Control-Allow-Origin': '*',
-    //                 'Content-Type': 'application/json'
-    //             }
-    //         });
-    //         setIsLoggedIn(true);
-    //         setUsername(res.data.username);
-    //     } catch (e) {
-    //         setIsLoggedIn(false);
-    //     }
-    // }
-    // verify();
-    // verify()
-    //     .then(res => {
-    //         dispatch(actions.isLoggedIn({ status: true, username: res }));
-    // setIsLoggedIn(true)
-    // setUsername(res)
-    // })
-    // .catch(err => {
-    // setIsLoggedIn(false)
-    // dispatch(actions.isLoggedIn({ status: false, username: '' }));
-    //         })
-    // }, []);
     const logout = async () => {
         try {
             await axios.delete(`${url}/users/logout`, {
@@ -99,13 +67,17 @@ const UserPage = () => {
         <>
             <Nav />
             <main className='page' style={{ width: '90vw', margin: '3rem auto 1rem' }}>
-                <h2 className='page-header'>Hi, {username}</h2>
+                {isLoggedIn &&
+                    <h2 className='page-header'>Hi, {username}</h2>
+                }
                 <div className='row' style={{ justifyContent: 'space-between' }}>
                     <section className='col' style={{ maxWidth: '300px' }}>
-                        <img style={{ border: '1px solid var(--color-light-grey' }}
-                            src={`http://localhost:8080/static/avatars/${randomNum()}.jpeg`}
-                            alt='Cute dog avatar'
-                        />
+                        {isLoggedIn &&
+                            <img style={{ border: '1px solid var(--color-light-grey' }}
+                                src={`http://localhost:8080/static/avatars/${avatar}.jpeg`}
+                                alt='Cute dog avatar'
+                            />
+                        }
                         <Box sx={{ display: 'inline-flex', mt: 2 }} >
                             <Button
                                 onClick={logout}

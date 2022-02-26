@@ -2,7 +2,8 @@ import { setLoggedIn } from '../constants/constants';
 
 const initialState = {
     loggedIn: false,
-    username: ''
+    username: '',
+    avatar: ''
 }
 
 export const loggedInReducer = (state = initialState, action = {}) => {
@@ -11,7 +12,8 @@ export const loggedInReducer = (state = initialState, action = {}) => {
             return {
                 ...state,
                 loggedIn: action.payload.status,
-                username: action.payload.username
+                username: action.payload.username,
+                avatar: action.payload.avatar
             }
         default:
             return { ...state }

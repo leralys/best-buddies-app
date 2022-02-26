@@ -10,7 +10,7 @@ const verify = async () => {
                 'Content-Type': 'application/json'
             }
         });
-        return res.data.username;
+        return [res.data.username, res.data.avatar];
     } catch (err) {
         throw err;
     }
