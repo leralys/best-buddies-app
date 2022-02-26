@@ -18,6 +18,9 @@ const User = db.define('user', {
     password: {
         type: DataTypes.STRING,
     },
+    avatar: {
+        type: DataTypes.INTEGER
+    }
 }, {
     timestamps: false
 });

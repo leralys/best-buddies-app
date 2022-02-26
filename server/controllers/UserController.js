@@ -1,6 +1,7 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from '../models/UserModel.js';
+import randomNum from '../utilities/randomNum.js';
 
 class UserConroller {
     async register(req, res) {
@@ -11,7 +12,8 @@ class UserConroller {
             await User.create({
                 username: username,
                 email: email,
-                password: hashPassword
+                password: hashPassword,
+                avatar: randomNum()
             });
             res.json({ msg: 'Register Successful' });
         }
@@ -20,7 +22,6 @@ class UserConroller {
         }
     }
     async login(req, res) {
-        // console.log(req.body.email, req.body.password);
         try {
             const user = await User.findAll({
                 where: {
@@ -29,7 +30,7 @@ class UserConroller {
             });
             const match = await bcrypt.compare(req.body.password, user[0].password);
             if (!match) return res.status(403).json({ msg: 'Wrong Password!' });
-            const { email, username } = user[0];
+            const { email, username, avatar } = user[0];
             const userId = user[0].user_id;
             const accessToken = jwt.sign({ userId, email }, process.env.ACCESS_TOKEN_SECRET, {
                 expiresIn: '1d'
@@ -38,9 +39,8 @@ class UserConroller {
                 httpOnly: true,
                 maxAge: 86400 * 1000
             });
-            res.json({ accessToken, username });
+            res.json({ accessToken, username, avatar });
         } catch (e) {
-            // console.log(e);
             res.status(401).json({ msg: 'Email not found' });
         }
     }

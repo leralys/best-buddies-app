@@ -20,7 +20,6 @@ class CheckinController {
                     ['createdat', 'DESC']
                 ],
                 where: {
-                    // location_id: locationId
                     location_id: locationId,
                     createdAt: {
                         [Op.lt]: new Date(),

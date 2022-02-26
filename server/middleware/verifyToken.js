@@ -16,6 +16,7 @@ export const verifyToken = (req, res, next) => {
                 }
             });
             res.locals.username = user[0].username;
+            res.locals.avatar = user[0].avatar;
             next();
         } catch (e) {
             return res.sendStatus(403);
