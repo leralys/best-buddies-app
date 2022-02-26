@@ -15,8 +15,9 @@ const Hero = () => {
                     Revolutionary app that will change your life (at least we hope so).</h3>
                 <br />
                 <Button variant='contained' size='large'
+                    className='button-main'
                     component={Link} to={'/register'}
-                    style={{ width: 'fit-content', marginTop: '1rem' }}>
+                >
                     Try Now
                 </Button>
             </div>

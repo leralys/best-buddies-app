@@ -89,7 +89,7 @@ const Form = ({ title }) => {
             }
         } else if (action === 'Sign In') {
             try {
-                let response = await axios.post(`${url}/users/login`, {
+                await axios.post(`${url}/users/login`, {
                     email: values.email,
                     password: values.password,
                 }, {

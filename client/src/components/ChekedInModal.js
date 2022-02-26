@@ -1,20 +1,36 @@
+import { Box, Button, Modal } from '@mui/material';
 import { useSelector } from 'react-redux';
-import { Typography } from '@mui/material';
-import '../pages/ParkPageStyles.css';
-import './CheckedIn.css';
+import { useState } from 'react';
 import extractTime from '../utilities/extractTime';
-import ChekedInModal from './ChekedInModal';
 
+const style = {
+    position: 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 400,
+    maxHeight: '80vh',
+    bgcolor: 'background.paper',
+    border: '2px solid #000',
+    boxShadow: 24,
+    p: 4,
+    overflow: 'scroll'
+};
 
-const CheckedIn = () => {
-    const n = 4;
+const ChekedInModal = (props) => {
     const checkedIn = useSelector(state => state.checkedIn.checkedIn);
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
     return (
-        <>
-            <h2 className='page-header'>Last Check in's:</h2>
-            <div>
-                <ul>
-                    {checkedIn.slice(0, n).map(el => {
+        <div>
+            <Button onClick={handleOpen}>See all</Button>
+            <Modal
+                open={open}
+                onClose={handleClose}
+            >
+                <Box sx={style}>
+                    {checkedIn.map(el => {
                         return (
                             <li key={el.createdat} className='col'
                                 style={{ listStyle: 'none' }}>
@@ -31,18 +47,10 @@ const CheckedIn = () => {
                         )
                     })
                     }
-                </ul>
-                {checkedIn.length > 4 &&
-                    <>
-                        <Typography style={{ alignSelf: 'flex - end' }}>
-                            ... and {checkedIn.length - n} more
-                        </Typography>
-                        <ChekedInModal n={n} />
-                    </>
-                }
-            </div>
-        </>
-    )
+                </Box>
+            </Modal>
+        </div>
+    );
 }
 
-export default CheckedIn;
+export default ChekedInModal;

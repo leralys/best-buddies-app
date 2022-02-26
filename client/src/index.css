@@ -1,5 +1,6 @@
 :root {
   --color-dark-grey: #252525;
+  --color-medium-grey: #565656;
   --color-light-grey: #e3e3e3;
   --color-map-red: #c64142;
   --color-green: #4cad73;
@@ -46,7 +47,7 @@ a.Nav-link {
   padding-bottom: 2rem;
 }
 .page-header {
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
 }
 .page-section {
   margin-bottom: 2rem;
@@ -59,4 +60,8 @@ a.Nav-link {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
+}
+.button-main {
+  width: fit-content;
+  margin-top: 1rem;
 }
