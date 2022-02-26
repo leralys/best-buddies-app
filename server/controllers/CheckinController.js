@@ -20,12 +20,12 @@ class CheckinController {
                     ['createdat', 'DESC']
                 ],
                 where: {
-                    location_id: locationId
-                    // location_id: locationId,
-                    // createdAt: {
-                    //     [Op.lt]: new Date(),
-                    //     [Op.gt]: new Date(new Date() - 60 * 60 * 1000)
-                    // }
+                    // location_id: locationId
+                    location_id: locationId,
+                    createdAt: {
+                        [Op.lt]: new Date(),
+                        [Op.gt]: new Date(new Date() - 60 * 60 * 1000)
+                    }
                 }
             });
             res.status(200).json({ users: users });
@@ -36,13 +36,32 @@ class CheckinController {
     async newCheckin(req, res) {
         const { username, locationId } = req.body;
         try {
+            const user = await Checkin.findAll({
+                attributes: ['username', 'createdat', 'id'],
+                where: {
+                    location_id: locationId,
+                    username: username,
+                    createdAt: {
+                        [Op.lt]: new Date(),
+                        [Op.gt]: new Date(new Date() - 60 * 60 * 1000)
+                    }
+                }
+            });
+            if (user.length > 0) {
+                await Checkin.destroy({
+                    where: {
+                        username: username,
+                        id: user[0].id
+                    }
+                });
+            }
             await Checkin.create({
                 location_id: locationId,
                 username: username
             });
             res.status(200).json({ msg: 'Check In Successful' });
         } catch (e) {
-            res.sendStatus(400);
+            res.status(400).json({ msg: 'Something went wrong' });
         }
     }
 }
