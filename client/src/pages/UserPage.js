@@ -7,7 +7,6 @@ import { IconButton, Box, Button } from '@mui/material';
 import Nav from '../components/Nav';
 import { toast } from 'react-toastify';
 import { url } from '../utilities/url';
-import randomNum from '../utilities/randomNum';
 
 const UserPage = () => {
     const navigate = useNavigate();
@@ -25,7 +24,6 @@ const UserPage = () => {
             });
             navigate('/');
         } catch (e) {
-            console.log(e);
             navigate('/');
         }
     }
@@ -49,9 +47,9 @@ const UserPage = () => {
                 style={{ alignItems: 'center' }}>
                 Are you sure? 😥
                 <Button
-                    variant="outlined"
-                    color="error"
-                    size="small"
+                    variant='outlined'
+                    color='error'
+                    size='small'
                     onMouseDown={deleteAcc}
                     sx={{ mt: 2 }}
                 >
@@ -74,7 +72,7 @@ const UserPage = () => {
                     <section className='col' style={{ maxWidth: '300px' }}>
                         {isLoggedIn &&
                             <img style={{ border: '1px solid var(--color-light-grey' }}
-                                src={`http://localhost:8080/static/avatars/${avatar}.jpeg`}
+                                src={`${url}/static/avatars/${avatar}.jpeg`}
                                 alt='Cute dog avatar'
                             />
                         }

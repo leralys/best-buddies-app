@@ -2,8 +2,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import StarIcon from '@mui/icons-material/Star';
 import { Button } from '@mui/material';
 import '../pages/ParkPageStyles.css';
-import PetsIcon from '@mui/icons-material/Pets';
 import ParkAddToFavorites from './ParkAddToFavorites';
+import MapMini from './MapMini';
 import axios from 'axios';
 import actions from '../redux/actions/index';
 import { url } from '../utilities/url';
@@ -38,10 +38,7 @@ const ParkDetailes = () => {
         <>
             <div className='row' style={{ width: '60vw' }}>
                 <div className='col' style={{ marginRight: '2rem' }}>
-                    <div style={{ background: 'var(--color-green)', width: '300px', height: '300px', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                        {park.address}
-                        <PetsIcon className='marker-icon' style={{ color: 'var(--color-map-red)' }} />
-                    </div>
+                    <MapMini />
                 </div>
                 <div className='col' style={{ marginTop: '1rem', justifyContent: 'space-between' }}>
                     <div className='col'>

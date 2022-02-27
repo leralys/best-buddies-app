@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import actions from '../redux/actions/index';
@@ -12,7 +12,6 @@ import {
     Avatar
 } from '@mui/material';
 import Search from './Search';
-import randomNum from '../utilities/randomNum';
 
 const Nav = () => {
     const dispatch = useDispatch();

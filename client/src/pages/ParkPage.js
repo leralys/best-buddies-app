@@ -47,7 +47,7 @@ const ParkPage = () => {
                     </div>
                 </section>
                 <section className='row page-section' style={{ justifyContent: 'center' }}>
-                    <ParkCarousel />
+                    {park && <ParkCarousel />}
                 </section>
                 {park &&
                     <ParkAbout />

@@ -1,10 +1,10 @@
 import Map, { Marker, NavigationControl, GeolocateControl, Popup } from 'react-map-gl';
 import { useSelector } from 'react-redux';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import useSupercluster from 'use-supercluster';
 import { Link } from 'react-router-dom';
 import PetsIcon from '@mui/icons-material/Pets';
-import './Map.css';
+import './MapMain.css';
 
 
 const MapMain = () => {
@@ -15,11 +15,23 @@ const MapMain = () => {
     });
     const [selectedPark, setSelectedPark] = useState(null);
     const locations = useSelector(state => state.locations.locations);
+    const park = useSelector(state => state.park.park[0]);
     const mapRef = useRef();
     let points = [];
     const bounds = mapRef.current
         ? mapRef.current.getMap().getBounds().toArray().flat()
         : null;
+    useEffect(() => {
+        if (park) {
+            setViewState({
+                ...viewState,
+                latitude: park.lat,
+                longitude: park.lng,
+                zoom: 17
+            });
+            window.scrollTo(500, 500);
+        }
+    }, [viewState, park]);
     if (locations) {
         // for supercluster library to work
         // we must produce an array of GeoJSON Feature objects, with the geometry of each object being a GeoJSON Point
@@ -114,12 +126,6 @@ const MapMain = () => {
                                         const expansionZoom = Math.min(
                                             supercluster.getClusterExpansionZoom(cluster.id), 20
                                         );
-                                        // setViewState({
-                                        //     ...viewState,
-                                        //     latitude: lat,
-                                        //     longitude: lng,
-                                        //     zoom: expansionZoom
-                                        // });
                                         mapRef.current.easeTo({
                                             center: cluster.geometry.coordinates,
                                             zoom: expansionZoom,
