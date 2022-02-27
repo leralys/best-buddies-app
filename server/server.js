@@ -28,7 +28,7 @@ app.use(express.static('images'));
 app.use(cookieParser());
 app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'images')));
-app.use('/static/avatars', express.static(path.join(__dirname, 'avatars')));
+// app.use('/static/avatars', express.static(path.join(__dirname, 'avatars')));
 
 app.use('/api/locations', locations);
 app.use('/users', users);
