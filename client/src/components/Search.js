@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { IconButton, FormControl, OutlinedInput, InputAdornment } from '@mui/material';
+import { FormControl, OutlinedInput, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import './Search.css';
 
@@ -35,10 +35,6 @@ const Search = (props) => {
         })
     }
     return (
-        // <IconButton aria-label='search' component='span'>
-        //     <SearchIcon />
-        // </IconButton>
-        // </div>
         <FormControl variant='outlined' id={props.id} className='Search-container'>
             <OutlinedInput
                 type='text'

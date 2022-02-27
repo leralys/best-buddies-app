@@ -11,6 +11,7 @@ import {
     Button,
     Avatar
 } from '@mui/material';
+import { url } from '../utilities/url';
 import Search from './Search';
 
 const Nav = () => {
@@ -39,7 +40,7 @@ const Nav = () => {
                     <Search />
                     {isLoggedIn
                         ? <Button component={Link} className='Nav-link' to={'/mypage'}>
-                            <Avatar alt='Cute dog avatar' src={`http://localhost:8080/static/avatars/${avatar}.jpeg`} />
+                            <Avatar alt='Cute dog avatar' src={`${url}/static/avatars/${avatar}.jpeg`} />
                         </Button>
                         : <Button component={Link} className='Nav-link' to={'/login'}>Sign In</Button>
                     }

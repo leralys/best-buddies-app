@@ -15,9 +15,6 @@ const UserFavorites = () => {
     const locations = useSelector(state => state.locations.locations);
     const username = useSelector(state => state.loggedIn.username);
     const n = 4;
-    // const findAdr = loc_id => {
-    //     return (locations.find(el => el.location_id === loc_id));
-    // }
     const deleteFav = async (locationId) => {
         try {
             await axios.delete(`${url}/favorites/delete`, {
@@ -80,7 +77,7 @@ const UserFavorites = () => {
                             })
                             }
                         </ul>
-                        {favorites.length > 4 &&
+                        {favorites.length > n &&
                             <>
                                 <Typography>
                                     ... and {favorites.length - n} more

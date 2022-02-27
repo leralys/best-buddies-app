@@ -32,7 +32,7 @@ const CheckedIn = () => {
                     })
                     }
                 </ul>
-                {checkedIn.length > 4 &&
+                {checkedIn.length > n &&
                     <>
                         <Typography style={{ alignSelf: 'flex - end' }}>
                             ... and {checkedIn.length - n} more
