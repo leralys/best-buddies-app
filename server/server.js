@@ -9,6 +9,7 @@ import db from './config/Database.js';
 import locations from './routes/LocationsRoutes.js';
 import users from './routes/UserRoutes.js';
 import checkins from './routes/CheckinRoutes.js';
+import favorites from './routes/FavoritesRoutes.js';
 
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -28,11 +29,11 @@ app.use(express.static('images'));
 app.use(cookieParser());
 app.use(express.json());
 app.use('/static', express.static(path.join(__dirname, 'images')));
-// app.use('/static/avatars', express.static(path.join(__dirname, 'avatars')));
 
 app.use('/api/locations', locations);
 app.use('/users', users);
 app.use('/checkins', checkins);
+app.use('/favorites', favorites);
 
 app.all('*', (req, res) => {
     res.status(404).send('Page Not Found');

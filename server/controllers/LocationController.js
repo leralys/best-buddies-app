@@ -4,13 +4,6 @@ import { Op } from 'sequelize';
 
 class LocationConroller {
     async getLocations(req, res) {
-        // try {
-        //     const locations = await Location.findAll();
-        //     res.json({ locations: locations });
-        // } catch (e) {
-        //     console.log(e);
-        //     res.sendStatus(503);
-        // }
         const [data, error, status] = await catchAsync(Location.findAll(), 503);
         !error ? res.json({ locations: data }) : res.sendStatus(status);
     }
