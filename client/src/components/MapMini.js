@@ -10,7 +10,6 @@ const MapMini = () => {
         <Link to={'/'}>
             <Button>
                 <img className='MapMini'
-                    hover={false}
                     src={`${url}/static/minimaps/${park.location_id}.png`}
                     alt={park.address}
                 />

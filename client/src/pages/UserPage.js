@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import actions from '../redux/actions/index';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { IconButton, Box, Button } from '@mui/material';
 import Nav from '../components/Nav';
+import UserFavorites from '../components/UserFavorites';
 import { toast } from 'react-toastify';
 import { url } from '../utilities/url';
 
@@ -15,6 +17,10 @@ const UserPage = () => {
     const isLoggedIn = useSelector(state => state.loggedIn.loggedIn);
     const avatar = useSelector(state => state.loggedIn.avatar);
     const username = useSelector(state => state.loggedIn.username);
+    const favorites = useSelector(state => state.favorites.favorites);
+    useEffect(() => {
+        dispatch(actions.fetchFavorites(username));
+    }, [isLoggedIn, dispatch, username]);
     const logout = async () => {
         try {
             await axios.delete(`${url}/users/logout`, {
@@ -74,7 +80,7 @@ const UserPage = () => {
                 {isLoggedIn &&
                     <h2 className='page-header'>Hi, {username}</h2>
                 }
-                <div className='row' style={{ justifyContent: 'space-between' }}>
+                <div className='row' style={{ width: '60vw', justifyContent: 'space-between' }}>
                     <section className='col' style={{ maxWidth: '300px' }}>
                         {isLoggedIn &&
                             <img style={{ border: '1px solid var(--color-light-grey' }}
@@ -109,15 +115,9 @@ const UserPage = () => {
                             </Button>
                         </Box>
                     </section>
-                    <section className='col'>
-                        <h2 className='page-header'>Favorite parks</h2>
-                        <ul>
-                            <li>Address_1</li>
-                            <li>Address_2</li>
-                            <li>Address_3</li>
-                            <li>Address_4</li>
-                        </ul>
-                    </section>
+                    {favorites && isLoggedIn &&
+                        <UserFavorites />
+                    }
                 </div>
             </main>
         </>

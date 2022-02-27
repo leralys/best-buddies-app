@@ -3,7 +3,7 @@ import { Typography } from '@mui/material';
 import '../pages/ParkPageStyles.css';
 import './CheckedIn.css';
 import extractTime from '../utilities/extractTime';
-import ChekedInModal from './ChekedInModal';
+import CheckedInModal from './CheckedInModal';
 
 
 const CheckedIn = () => {
@@ -37,7 +37,7 @@ const CheckedIn = () => {
                         <Typography style={{ alignSelf: 'flex - end' }}>
                             ... and {checkedIn.length - n} more
                         </Typography>
-                        <ChekedInModal n={n} />
+                        <CheckedInModal n={n} />
                     </>
                 }
             </div>

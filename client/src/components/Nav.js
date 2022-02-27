@@ -24,14 +24,17 @@ const Nav = () => {
             })
             .catch(err => {
                 dispatch(actions.isLoggedIn({ status: false, username: '', avatar: '' }));
-            })
-    }, []);
+            });
+    }, [dispatch]);
     return (
         <Box sx={{ flexGrow: 1 }}>
             <AppBar position='static' style={{ backgroundColor: 'var(--color-green)' }}>
                 <Toolbar>
                     <Typography variant='h6' component='div' sx={{ flexGrow: 1, pl: '2rem' }}>
-                        <Link className='Nav-link' to={`/`}>Best Buddies</Link>
+                        <Link className='Nav-link' to={`/`}
+                            onMouseDown={() => dispatch(actions.clearCurrPark())}>
+                            Best Buddies
+                        </Link>
                     </Typography>
                     <Search />
                     {isLoggedIn

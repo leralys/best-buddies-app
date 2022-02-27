@@ -17,7 +17,7 @@ const style = {
     overflow: 'scroll'
 };
 
-const ChekedInModal = (props) => {
+const ChechedInModal = (props) => {
     const checkedIn = useSelector(state => state.checkedIn.checkedIn);
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
@@ -53,4 +53,4 @@ const ChekedInModal = (props) => {
     );
 }
 
-export default ChekedInModal;
+export default ChechedInModal;

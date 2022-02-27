@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import { Button } from '@mui/material';
 import '../pages/ParkPageStyles.css';
@@ -15,9 +16,13 @@ const ParkDetailes = () => {
     const park = useSelector(state => state.park.park[0]);
     const isLoggedIn = useSelector(state => state.loggedIn.loggedIn);
     const username = useSelector(state => state.loggedIn.username);
+    const favorites = useSelector(state => state.favorites.favorites);
     const rate = [...Array(park.rate)].map((elem, i) => {
         return <StarIcon key={i} style={{ color: 'var(--color-yelow)' }} />
     });
+    useEffect(() => {
+        dispatch(actions.fetchFavorites(username));
+    }, [isLoggedIn, dispatch, username]);
     const checkin = async () => {
         try {
             const res = await axios.post(`${url}/checkins/new`, {
@@ -61,7 +66,9 @@ const ParkDetailes = () => {
                     }
                 </div>
             </div>
-            <ParkAddToFavorites />
+            {isLoggedIn && favorites &&
+                <ParkAddToFavorites />
+            }
         </>
     );
 }
