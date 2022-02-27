@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import actions from '../redux/actions/index';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { IconButton, Box, Button } from '@mui/material';
@@ -10,6 +11,7 @@ import { url } from '../utilities/url';
 
 const UserPage = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
     const isLoggedIn = useSelector(state => state.loggedIn.loggedIn);
     const avatar = useSelector(state => state.loggedIn.avatar);
     const username = useSelector(state => state.loggedIn.username);
@@ -22,8 +24,10 @@ const UserPage = () => {
                     'Content-Type': 'application/json'
                 }
             });
+            dispatch(actions.clearCurrPark());
             navigate('/');
         } catch (e) {
+            dispatch(actions.clearCurrPark());
             navigate('/');
         }
     }
@@ -36,8 +40,10 @@ const UserPage = () => {
                     'Content-Type': 'application/json'
                 }
             });
+            dispatch(actions.clearCurrPark());
             navigate('/');
         } catch (e) {
+            dispatch(actions.clearCurrPark());
             navigate('/');
         }
     }

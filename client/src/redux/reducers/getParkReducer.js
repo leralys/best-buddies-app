@@ -1,7 +1,8 @@
 import {
     fetchPark_pending,
     fetchPark_success,
-    fetchPark_error
+    fetchPark_error,
+    clearPark
 } from '../constants/constants.js';
 
 const initState = {
@@ -28,6 +29,13 @@ export const getParkReducer = (state = initState, action = {}) => {
                 ...state,
                 loading: false,
                 error: action.payload
+            }
+        case clearPark:
+            return {
+                ...state,
+                loading: false,
+                park: [],
+                error: ''
             }
         default:
             return { ...state }

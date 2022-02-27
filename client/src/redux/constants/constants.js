@@ -11,3 +11,5 @@ export const setLoggedIn = 'setLoggedIn';
 export const fetchCheckedIn_pending = 'fetchCheckedIn_pending';
 export const fetchCheckedIn_success = 'fetchCheckedIn_success';
 export const fetchCheckedIn_error = 'fetchCheckedIn_error';
+
+export const clearPark = 'clearPark';
