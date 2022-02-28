@@ -8,6 +8,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Link } from 'react-router-dom';
 import UserFavoritesModal from './UserFavoritesModal';
 import { toast } from 'react-toastify';
+import './UserFavorites.css';
 
 const UserFavorites = () => {
     const dispatch = useDispatch();
@@ -48,7 +49,7 @@ const UserFavorites = () => {
             });
     }
     return (
-        <section className='col'>
+        <section className='col User-favorites'>
             {favorites.length === 0
                 ? <div>
                     <Typography variant='h5' className='page-header'>No favorite parks yet :(</Typography>
@@ -57,7 +58,7 @@ const UserFavorites = () => {
                 : <>
                     <h2 className='page-header'>Favorite parks:</h2>
                     <div>
-                        <ul style={{ width: '30vw' }}>
+                        <ul>
                             {favorites.slice(0, n).map(el => {
                                 return (
                                     <li key={el.id} className='row'

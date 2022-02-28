@@ -16,11 +16,11 @@ const UserPage = () => {
     return (
         <>
             <Nav />
-            <main className='page' style={{ width: '90vw', margin: '3rem auto 1rem' }}>
+            <main className='page' id='User-page' style={{ width: '90vw', margin: '3rem auto 1rem' }}>
                 {isLoggedIn &&
                     <h2 className='page-header'>Hi, {username}</h2>
                 }
-                <div className='row' style={{ width: '60vw', justifyContent: 'space-between' }}>
+                <div className='row User-info'>
                     {isLoggedIn &&
                         <UserPersonal />
                     }

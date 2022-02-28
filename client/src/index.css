@@ -34,12 +34,6 @@ code {
   width: 100vw;
   height: 100vh;
 }
-
-a.Nav-link {
-  color: white;
-  text-decoration: none;
-}
-
 .page {
   min-height: 85vh;
   padding-bottom: 2rem;
@@ -62,4 +56,98 @@ a.Nav-link {
 .button-main {
   width: fit-content;
   margin-top: 1rem;
+}
+
+@media only screen and (max-width: 850px) {
+  .row.page-section {
+    flex-direction: column;
+  }
+  .row.page-section#Carousel {
+    flex-direction: row;
+  }
+  .CheckedIn {
+    margin-top: 2rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .Hero-text h1 {
+    font-size: 2rem;
+  }
+  .Hero-text h3 {
+    font-size: 1rem;
+  }
+  .Hero-text h2 {
+    font-size: 1.2rem;
+  }
+  .Hero-text {
+    width: 80%;
+  }
+  .User-info {
+    flex-direction: column;
+  }
+  .User-favorites {
+    margin-top: 2rem;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .Footer {
+    line-height: 2;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .Park-detailes {
+    flex-direction: column;
+  }
+  .col {
+    width: 100%;
+  }
+  .additional-container,
+  .CheckedIn {
+    margin-left: 1rem;
+  }
+  .list {
+    margin-left: 2rem;
+  }
+  #hideOnSmall {
+    display: none;
+  }
+  #showOnSmall {
+    display: block;
+  }
+  #checkin-button {
+    width: fit-content;
+    margin-top: 2rem;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .Footer {
+    padding: 1.8rem;
+  }
+  #Nav-search {
+    width: 50%;
+  }
+  #showOnSmall {
+    display: none;
+  }
+  .page-header {
+    text-align: center;
+  }
+  div.row.User-info {
+    align-items: center;
+  }
+  /* .User-favorites {
+  } */
+  div.row.User-info {
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .Hero-text {
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+  img.MapMini {
+    width: 250px;
+    height: 250px;
+  }
 }

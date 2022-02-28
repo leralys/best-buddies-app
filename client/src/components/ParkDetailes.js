@@ -41,11 +41,11 @@ const ParkDetailes = () => {
     }
     return (
         <>
-            <div className='row' style={{ width: '60vw' }}>
+            <div className='row Park-detailes' style={{ width: '60vw' }}>
                 <div className='col' style={{ marginRight: '2rem' }}>
                     <MapMini />
                 </div>
-                <div className='col' style={{ marginTop: '1rem', justifyContent: 'space-between' }}>
+                <div className='col additional-container' style={{ marginTop: '1rem', justifyContent: 'space-between' }}>
                     <div className='col'>
                         Rating:
                         <div className='row' style={{ marginTop: '0.5rem', marginBottom: '1rem' }}>
@@ -58,6 +58,7 @@ const ParkDetailes = () => {
                     </div>
                     {isLoggedIn &&
                         <Button variant='contained'
+                            id='checkin-button'
                             onClick={checkin}
                             sx={{ mb: 2 }}
                             style={{ background: 'var(--color-map-red)' }}>

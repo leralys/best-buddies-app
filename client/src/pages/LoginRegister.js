@@ -131,6 +131,7 @@ const Form = ({ title }) => {
                         className='Form col'>
                         {title === 'Register' &&
                             <TextField
+                                required
                                 id='username'
                                 label='Username'
                                 type='text'
@@ -145,12 +146,14 @@ const Form = ({ title }) => {
                             type='email'
                             value={values.email}
                             sx={{ m: 1, width: '100%' }}
+                            required
                             onChange={handleChange('email')}
                         />
                         <FormControl sx={{ m: 1, width: '100%' }} variant='outlined'>
                             <InputLabel htmlFor='password'>Password</InputLabel>
                             <OutlinedInput
                                 id='password'
+                                required
                                 type={values.showPassword ? 'text' : 'password'}
                                 value={values.password}
                                 onChange={handleChange('password')}

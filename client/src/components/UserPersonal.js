@@ -68,9 +68,9 @@ const UserPersonal = () => {
             });
     }
     return (
-        <section className='col' style={{ maxWidth: '300px' }}>
+        <section className='col User-personal' style={{ maxWidth: '300px' }}>
             {isLoggedIn &&
-                <img style={{ border: '1px solid var(--color-light-grey' }}
+                <img style={{ border: '1px solid var(--color-light-grey', marginLeft: '0.5rem' }}
                     src={`${url}/static/avatars/${avatar}.jpeg`}
                     alt='Cute dog avatar'
                 />

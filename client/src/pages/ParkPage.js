@@ -35,7 +35,7 @@ const ParkPage = () => {
                             : <CircularProgress color="secondary" />
                         }
                     </div>
-                    <div className='col'>
+                    <div className='col CheckedIn'>
                         {checkedIn.length > 0 && isLoggedIn &&
                             <CheckedIn />
                         }
@@ -49,9 +49,9 @@ const ParkPage = () => {
                         }
                     </div>
                 </section>
-                <section className='row page-section' style={{ justifyContent: 'center' }}>
+                <section className='row page-section' id='Carousel' style={{ justifyContent: 'center' }}>
                     {park
-                        ? <ParkCarousel />
+                        ? <ParkCarousel id='Carousel' />
                         : <CircularProgress color="secondary" />
                     }
                 </section>

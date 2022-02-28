@@ -31,7 +31,7 @@ const MapMain = () => {
             });
             window.scrollTo(500, 500);
         }
-    }, [park]);
+    }, []);
     if (locations) {
         // for supercluster library to work
         // we must produce an array of GeoJSON Feature objects, with the geometry of each object being a GeoJSON Point

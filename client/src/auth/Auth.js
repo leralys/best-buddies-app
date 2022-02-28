@@ -26,7 +26,7 @@ export const Auth = (props) => {
     }, [navigate]);
     return (
         <div
-            style={{ width: '100vw', height: '90vh' }}>
+            style={{ width: '100vw', minHeight: '100vh' }}>
             {redirect ?
                 props.children
                 : <div className='row' style={{ justifyContent: 'center', marginTop: '100px' }}>
