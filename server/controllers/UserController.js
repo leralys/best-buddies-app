@@ -67,6 +67,23 @@ class UserConroller {
             res.status(403).json({ msg: 'Something went wrong' });
         }
     }
+    async changeAvatar(req, res) {
+        const { avatar } = req.body;
+        const accessToken = req.cookies.accessToken;
+        if (!accessToken) return res.sendStatus(204);
+        const decoded = jwt.decode(accessToken);
+        try {
+            await User.update({ avatar: avatar }, {
+                where: {
+                    user_id: decoded.userId,
+                    email: decoded.email
+                }
+            });
+            res.sendStatus(200);
+        } catch (e) {
+            res.status(400).json({ msg: 'Something went wrong' });
+        }
+    }
 }
 
 export default new UserConroller;

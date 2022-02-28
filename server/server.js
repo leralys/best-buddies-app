@@ -42,6 +42,3 @@ app.all('*', (req, res) => {
 app.listen(PORT, () => {
     console.log(`listening on port ${PORT}`)
 });
-
-
-// http://localhost:8080/static/1.jpeg

@@ -18,7 +18,6 @@ class FavoritesController {
     }
     async addToFav(req, res) {
         const { username, locationId } = req.body;
-        // console.log(req.body);
         try {
             await Favorite.create({
                 location_id: locationId,

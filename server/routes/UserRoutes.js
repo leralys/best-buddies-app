@@ -16,5 +16,6 @@ router.get('/token', verifyToken, (req, res) => {
 });
 router.delete('/logout', userController.logout);
 router.delete('/delete', verifyToken, userController.delete);
+router.patch('/avatar', verifyToken, userController.changeAvatar);
 
 export default router;
