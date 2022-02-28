@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { Typography } from '@mui/material';
+import { Typography, CircularProgress } from '@mui/material';
 import actions from '../redux/actions/index';
 import Nav from '../components/Nav';
 import ParkDetailes from '../components/ParkDetailes';
@@ -25,11 +25,14 @@ const ParkPage = () => {
         <>
             <Nav />
             <main className='page' style={{ width: '90vw', margin: '3rem auto 1rem' }}>
-                {park && <h2 className='page-header'>{park.address}, {park.city}</h2>}
+                {park
+                    ? <h2 className='page-header'>{park.address}, {park.city}</h2>
+                    : <CircularProgress color="secondary" />}
                 <section className='row page-section'>
                     <div className='col'>
-                        {park &&
-                            <ParkDetailes />
+                        {park
+                            ? <ParkDetailes />
+                            : <CircularProgress color="secondary" />
                         }
                     </div>
                     <div className='col'>
@@ -47,10 +50,14 @@ const ParkPage = () => {
                     </div>
                 </section>
                 <section className='row page-section' style={{ justifyContent: 'center' }}>
-                    {park && <ParkCarousel />}
+                    {park
+                        ? <ParkCarousel />
+                        : <CircularProgress color="secondary" />
+                    }
                 </section>
-                {park &&
-                    <ParkAbout />
+                {park
+                    ? <ParkAbout />
+                    : <CircularProgress color="secondary" />
                 }
             </main>
         </>

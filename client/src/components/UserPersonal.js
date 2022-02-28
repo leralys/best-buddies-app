@@ -23,6 +23,7 @@ const UserPersonal = () => {
                     'Content-Type': 'application/json'
                 }
             });
+            dispatch(actions.isLoggedIn({ status: false, username: '', avatar: '' }));
             dispatch(actions.clearCurrPark());
             navigate('/');
         } catch (e) {
