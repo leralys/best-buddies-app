@@ -9,13 +9,14 @@ export const Auth = (props) => {
     useEffect(() => {
         const authenticate = async () => {
             try {
-                await axios.get(`${url}/users/token`, {
+                const res = await axios.get(`${url}/users/token`, {
                     withCredentials: true,
                     headers: {
                         'Access-Control-Allow-Origin': '*',
                         'Content-Type': 'application/json'
                     }
                 });
+                console.log(res.data);
                 setRedirect(1);
             } catch (e) {
                 navigate('/login');

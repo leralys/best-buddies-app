@@ -41,6 +41,7 @@ const App = () => {
           <Route path='/login' element={<Form title={'Sign In'} />} />
           <Route path='/register' element={<Form title={'Register'} />} />
           <Route path='/mypage' element={<Auth><UserPage /></Auth>} />
+          {/* <Route path='/mypage' element={<UserPage />} /> */}
           <Route path='/locations/:locationId' element={<ParkPage />} />
           <Route path='*' element={<NotFound />} />
         </Routes>

@@ -1,16 +1,35 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import actions from '../redux/actions/index';
 import Nav from '../components/Nav';
 import UserPersonal from '../components/UserPersonal';
 import UserFavorites from '../components/UserFavorites';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { url } from '../utilities/url';
 
 const UserPage = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate();
     const isLoggedIn = useSelector(state => state.loggedIn.loggedIn);
     const username = useSelector(state => state.loggedIn.username);
     const favorites = useSelector(state => state.favorites.favorites);
     useEffect(() => {
+        // const authenticate = async () => {
+        //     try {
+        //         const res = await axios.get(`${url}/users/token`, {
+        //             withCredentials: true,
+        //             headers: {
+        //                 'Access-Control-Allow-Origin': '*',
+        //                 'Content-Type': 'application/json'
+        //             }
+        //         });
+        //         console.log(res.data);
+        //     } catch (e) {
+        //         navigate('/login');
+        //     }
+        // }
+        // authenticate();
         dispatch(actions.fetchFavorites(username));
     }, [isLoggedIn, dispatch, username]);
     return (
