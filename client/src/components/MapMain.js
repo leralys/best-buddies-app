@@ -1,4 +1,4 @@
-import Map, { Marker, NavigationControl, GeolocateControl, Popup } from 'react-map-gl';
+import ReactMapGL, { Marker, NavigationControl, GeolocateControl, Popup } from 'react-map-gl';
 import { useSelector } from 'react-redux';
 import { useState, useRef, useEffect } from 'react';
 import useSupercluster from 'use-supercluster';
@@ -64,7 +64,7 @@ const MapMain = () => {
     }
     return (
         <div className='Map-container'>
-            <Map
+            <ReactMapGL
                 reuseMaps
                 {...viewState}
                 onMove={evt => setViewState(evt.viewState)}
@@ -148,7 +148,7 @@ const MapMain = () => {
                         }
                     })
                 }
-            </Map>
+            </ReactMapGL>
         </div>
     )
 }
