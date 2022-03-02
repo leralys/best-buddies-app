@@ -1,9 +1,11 @@
 import jwt from 'jsonwebtoken';
 import users from '../models/UserModel.js  ';
 
+
 export const verifyToken = (req, res, next) => {
     const accessToken = req.cookies.accessToken;
     if (accessToken === null) return res.sendStatus(401);
+    console.log('req.cookies.accessToken', req.cookies.accessToken);
     jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, async (err, decode) => {
         if (err) return res.sendStatus(403);
         let email = decode.email;

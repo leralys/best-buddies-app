@@ -5,7 +5,6 @@ import locationController from '../controllers/LocationController.js';
 const router = express.Router();
 
 router.get('/', locationController.getAddresses);
-// router.get('/all', locationController.getLocations);
 router.get('/:city', locationController.getAddressesByCity);
 router.get('/spot/:id', locationController.getOneLocation);
 
