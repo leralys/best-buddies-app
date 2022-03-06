@@ -1,21 +1,18 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import actions from './redux/actions/index';
 import { Routes, Route } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-// import Home from './pages/Home';
-// import ParkPage from './pages/ParkPage';
-import UserPage from './pages/UserPage';
-import Form from './pages/LoginRegister';
-import NotFound from './pages/NotFound';
-import Footer from './components/Footer';
+import UserPage from './pages/userPage/UserPage';
+import Form from './pages/loginRegister/LoginRegister';
+import NotFound from './pages/notFound/NotFound';
+import Footer from './components/footer/Footer';
 import { Auth } from './auth/Auth';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Home = lazy(() => import('./pages/Home'));
-const ParkPage = lazy(() => import('./pages/ParkPage'));
+const Home = lazy(() => import('./pages/home/Home'));
+const ParkPage = lazy(() => import('./pages/parkPage/ParkPage'));
 
 const App = () => {
   const dispatch = useDispatch();

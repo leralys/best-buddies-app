@@ -1,5 +1,5 @@
 {
-  "name": "friend-of-a-friend",
+  "name": "best-buddies",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,11 +22,12 @@
     "react-scripts": "^5.0.0",
     "react-toastify": "^8.2.0",
     "redux": "^4.1.2",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^2.4.1",
+    "sass": "^1.49.9",
     "supercluster": "^7.1.4",
     "use-supercluster": "^0.4.0",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "worker-loader": "^3.0.8"
   },
   "scripts": {
     "start": "react-scripts start",
