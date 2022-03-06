@@ -1,0 +1,6 @@
+.Footer {
+  background-color: var(--color-dark-grey);
+  color: #fff;
+  padding: 3rem;
+  width: 100vw !important;
+}

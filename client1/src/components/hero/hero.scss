@@ -1,0 +1,152 @@
+@import "../../global.scss";
+
+.hero {
+  display: flex;
+  width: 100%;
+  font-size: 16px;
+  height: 100vh;
+  top: 65px;
+  left: 0;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  @include tablet {
+    flex-direction: column;
+  }
+
+  .container {
+    width: 90%;
+    height: 70%;
+    display: flex;
+    align-items: space-between;
+    justify-content: space-between;
+
+    // @include tablet {
+    //   width: 80%;
+    // }
+
+    .left {
+      flex: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+
+      @include tablet {
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+      }
+
+      .text-container {
+        height: fit-content;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        > * {
+          margin-bottom: 15px;
+
+          @include mobile {
+            margin-bottom: 30px;
+          }
+        }
+
+        h1 {
+          font-family: "Abril Fatface", sans-serif;
+          font-size: 50px;
+          color: $darkGreyColor;
+
+          @include fourHundred {
+            font-size: 35px;
+          }
+        }
+        h2 {
+          font-family: "Roboto", sans-serif;
+          font-size: 20px;
+          font-weight: 400;
+
+          @include fourHundred {
+            font-size: 18px;
+          }
+        }
+        h4 {
+          align-self: flex-end;
+          font-weight: 500;
+        }
+      }
+
+      .button-main {
+        margin-top: 40px;
+        background: $blueVioletColor;
+
+        @include tablet {
+          margin-top: 80px;
+          margin-right: 10px;
+          align-self: flex-end;
+        }
+      }
+    }
+
+    .right {
+      flex: 7;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end;
+
+      @include tablet {
+        display: none;
+      }
+
+      .img-container {
+        width: 90%;
+        z-index: 2;
+        padding: 50px 0;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+  }
+  .bottom-container {
+    height: 10%;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+
+    @include tablet {
+      transform: translateY(-80px);
+    }
+    @include fiveHundred {
+      display: none;
+    }
+
+    div {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      a {
+        img {
+          width: 25px;
+          animation: arrowBlink 2s infinite;
+          opacity: 0.9;
+        }
+      }
+      div {
+        font-size: 10px;
+      }
+    }
+    @keyframes arrowBlink {
+      100% {
+        opacity: 0.6;
+      }
+    }
+  }
+}

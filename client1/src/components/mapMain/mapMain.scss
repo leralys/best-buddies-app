@@ -1,0 +1,54 @@
+@import "../../global.scss";
+
+.mapMain {
+  width: 100vw;
+  height: calc(100vh - 65px - 112px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  .map-container {
+    width: 80%;
+    height: 90%;
+
+    @include tablet {
+      width: 90%;
+    }
+
+    .marker-icon {
+      color: $redColor;
+      cursor: pointer;
+    }
+    .marker-button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .mapboxgl-popup-close-button {
+      margin-right: 4px;
+      font-size: 1.5rem;
+    }
+
+    .cluster-marker {
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      background-color: var(--color-map-red);
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup-content {
+      margin: 0.5rem 0.5rem 0rem 0.2rem;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      font-size: 1rem;
+    }
+  }
+}

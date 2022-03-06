@@ -1,0 +1,57 @@
+// .page {
+//     min-height: 85vh;
+//     padding-bottom: 2rem;
+//   }
+//   .page-header {
+//     margin-bottom: 1.2rem;
+//   }
+//   .page-section {
+//     margin-bottom: 2rem;
+//   }
+//   .row {
+//     display: flex;
+//     flex-wrap: nowrap;
+//   }
+//   .col {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     flex-direction: column;
+//   }
+
+/* .thumbs.animated {
+  display: flex;
+  justify-content: center;
+}
+.carousel-root {
+  width: 60vw;
+} */
+
+@import "../../global.scss";
+
+.park-page {
+  .content {
+    position: relative;
+    top: 65px;
+    left: 0;
+    min-height: 80vh;
+    padding-bottom: 2rem;
+    width: 90vw;
+    margin: 3rem auto 1rem;
+    .page-header {
+      margin-bottom: 1.2rem;
+    }
+    .page-section {
+      display: flex;
+      margin-bottom: 2rem;
+
+      .left {
+        display: flex;
+        flex-direction: column;
+      }
+      .right {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}

@@ -1,0 +1,40 @@
+$tablet: 768px;
+$mobile: 320px;
+$fiveHundred: 500px;
+$fourHundred: 400px;
+
+$darkGreyColor: #252525;
+$mediumGreyColor: #565656;
+$lightGreyColor: #e3e3e3;
+$superlightGreyColor: #e9e9e9;
+$greenColor: #269660;
+$yellowColor: #faaf00;
+$darkBlueColor: #0072bb;
+$mediumBlueColor: #1975d1;
+$lightBlueColor: #1e91d6;
+$blueVioletColor: #2f55c6;
+$redColor: #c64142;
+
+@mixin tablet {
+  @media (max-width: #{$tablet}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: #{$mobile}) {
+    @content;
+  }
+}
+
+@mixin fiveHundred {
+  @media (max-width: #{$fiveHundred}) {
+    @content;
+  }
+}
+
+@mixin fourHundred {
+  @media (max-width: #{$fourHundred}) {
+    @content;
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../global.scss";
+
+.navbar-container {
+  // position: fixed;
+  // top: 0;
+  width: 100vw;
+
+  .navbar {
+    justify-content: space-between;
+    background: $greenColor;
+    // background: #269660;
+
+    .navbar-link {
+      color: white;
+      text-decoration: none;
+    }
+    .logo {
+      font-family: "Righteous", sans-serif;
+      font-size: 22px;
+      color: white;
+      text-decoration: none;
+    }
+    .navbar-search-container {
+      display: flex;
+      align-items: center;
+
+      #navbar-search {
+        border-radius: 4px;
+        margin-right: 10px;
+      }
+    }
+  }
+}

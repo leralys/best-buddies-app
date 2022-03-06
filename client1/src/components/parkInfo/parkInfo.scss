@@ -1,0 +1,34 @@
+@import "../../global.scss";
+
+.park-info {
+  .info-container {
+    display: flex;
+    width: 60vw;
+
+    .map-container {
+      display: flex;
+      flex-direction: column;
+      margin-right: 30px;
+    }
+    .additional-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin-top: 15px;
+
+      .col {
+        display: flex;
+        flex-direction: column;
+
+        .row {
+          display: flex;
+          margin-top: 8px;
+          margin-bottom: 16px;
+        }
+      }
+      #checkin-button {
+        background: $redColor;
+      }
+    }
+  }
+}
