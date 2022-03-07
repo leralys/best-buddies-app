@@ -51,9 +51,10 @@ class UserConroller {
         return res.sendStatus(200);
     }
     async delete(req, res) {
-        const accessToken = req.cookies.accessToken;
+        const { accessToken } = res.locals;
         if (!accessToken) return res.sendStatus(204);
         const decoded = jwt.decode(accessToken);
+        console.log(decoded);
         try {
             await User.destroy({
                 where: {
@@ -69,7 +70,7 @@ class UserConroller {
     }
     async changeAvatar(req, res) {
         const { avatar } = req.body;
-        const accessToken = req.cookies.accessToken;
+        const { accessToken } = res.locals;
         if (!accessToken) return res.sendStatus(204);
         const decoded = jwt.decode(accessToken);
         try {
