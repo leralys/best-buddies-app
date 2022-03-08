@@ -10,7 +10,7 @@ const CheckedIn = () => {
     const checkedIn = useSelector(state => state.checkedIn.checkedIn);
     return (
         <div className='checked-in'>
-            <h2 className='page-header'>Last Check in's:</h2>
+            <h2>Last Check in's:</h2>
             <div>
                 <ul>
                     {checkedIn.slice(0, n).map(el => {
@@ -32,7 +32,7 @@ const CheckedIn = () => {
                 </ul>
                 {checkedIn.length > n &&
                     <>
-                        <Typography style={{ alignSelf: 'flex - end' }}>
+                        <Typography style={{ marginLeft: '50px' }}>
                             ... and {checkedIn.length - n} more
                         </Typography>
                         <CheckedInModal n={n} />

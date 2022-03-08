@@ -1,15 +1,14 @@
 import Nav from '../../components/nav/Nav';
 import MapMain from '../../components/mapMain/MapMain';
-import Hero from '../../components/hero/Hero';
+import './mapPage.scss';
 
-const Home = () => {
+const MapPage = () => {
     return (
-        <>
+        <div className='map-page'>
             <Nav />
-            <Hero />
             <MapMain />
-        </>
+        </div>
     )
 }
 
-export default Home;
+export default MapPage;

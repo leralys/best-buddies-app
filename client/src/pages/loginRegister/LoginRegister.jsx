@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
+
 import {
     Button, Box, TextField, IconButton, InputLabel,
     OutlinedInput, InputAdornment, FormControl
@@ -82,7 +83,7 @@ const Form = ({ title }) => {
             }
         } else if (action === 'Sign In') {
             try {
-                await axios.post(`${url}/users/login`, {
+                const responce = await axios.post(`${url}/users/login`, {
                     email: values.email,
                     password: values.password,
                 }, {
@@ -97,6 +98,7 @@ const Form = ({ title }) => {
                     email: '',
                     password: ''
                 });
+                localStorage.setItem('accessToken', responce.data.accessToken);
                 navigate('/mypage');
             } catch (e) {
                 setValues({
@@ -112,7 +114,7 @@ const Form = ({ title }) => {
         }
     }
     return (
-        <div className='loginRegister'>
+        <>
             <Nav />
             <main className='page'>
                 <div className='container'>
@@ -185,7 +187,7 @@ const Form = ({ title }) => {
                     </Box>
                 </div>
             </main>
-        </div>
+        </>
     );
 }
 

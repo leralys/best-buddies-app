@@ -1,0 +1,33 @@
+@import "../../global.scss";
+
+.favorites {
+  margin-top: 45px;
+  background: #f5f5f5;
+  border: 1px solid $lightGreyColor;
+  border-radius: 15px;
+  padding: 15px;
+  height: 400px;
+  width: 420px;
+  max-width: 420px;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+
+  @include ninehundred {
+    margin-top: 0px;
+  }
+  @include fivehundred {
+    width: 100%;
+    height: fit-content;
+  }
+
+  div {
+    ul li {
+      display: flex;
+
+      .red {
+        color: $redColor;
+      }
+    }
+  }
+}

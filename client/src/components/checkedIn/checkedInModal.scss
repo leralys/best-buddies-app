@@ -1,0 +1,16 @@
+.checkedin-modal {
+  ul {
+    li {
+      display: flex;
+      flex-direction: column;
+      list-style: none;
+
+      div {
+        div {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+  }
+}

@@ -8,7 +8,7 @@ import HighlightOffIcon from '@mui/icons-material/HighlightOff';
 import { Link } from 'react-router-dom';
 import FavoritesModal from './FavoritesModal';
 import { toast } from 'react-toastify';
-import './Favorites.css';
+import './favorites.scss';
 
 const Favorites = () => {
     const dispatch = useDispatch();
@@ -30,8 +30,7 @@ const Favorites = () => {
     }
     const alert = (locationId) => {
         toast(
-            (<div className='col'
-                style={{ alignItems: 'center' }}>
+            (<div className='col'>
                 Are you sure?
                 <Button
                     variant='outlined'
@@ -49,14 +48,14 @@ const Favorites = () => {
             });
     }
     return (
-        <section className='col User-favorites'>
+        <section className='favorites'>
             {favorites.length === 0
                 ? <div>
                     <Typography variant='h5' className='page-header'>No favorite parks yet :(</Typography>
                     <Typography variant='h5' className='page-header'>Start from searching for some parks in your city</Typography>
                 </div>
                 : <>
-                    <h2 className='page-header'>Favorite parks:</h2>
+                    <h2 style={{ marginBottom: '20px' }} className='page-header'>Favorite parks:</h2>
                     <div>
                         <ul>
                             {favorites.slice(0, n).map(el => {
@@ -70,6 +69,7 @@ const Favorites = () => {
                                             onClick={() => alert(el.location_id)}
                                             aria-label='delete from favorites'
                                             component='span'
+                                            className='red'
                                             sx={{ ml: 1 }}>
                                             <HighlightOffIcon style={{ color: 'var(--color-map-red)' }} />
                                         </IconButton>
@@ -80,7 +80,7 @@ const Favorites = () => {
                         </ul>
                         {favorites.length > n &&
                             <>
-                                <Typography>
+                                <Typography style={{ marginLeft: '50px' }}>
                                     ... and {favorites.length - n} more
                                 </Typography>
                                 <FavoritesModal n={n} />

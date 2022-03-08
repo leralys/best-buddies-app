@@ -13,7 +13,8 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 300,
+    width: '90vw',
+    maxWidth: '600px',
     maxHeight: '50vh',
     bgcolor: 'background.paper',
     border: '2px solid #000',
@@ -40,7 +41,8 @@ const AvatarsModal = (props) => {
                 withCredentials: true,
                 headers: {
                     'Access-Control-Allow-Origin': '*',
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
                 }
             });
             dispatch(actions.isLoggedIn({ status: isLoggedIn, username: username, avatar: id }));

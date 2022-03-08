@@ -15,9 +15,9 @@ const Hero = () => {
         }
     }
     return (
-        <div className='hero' style={{ overflowX: 'hidden' }}>
-            <div className='container'>
-                <div className='left'>
+        <div className='hero'>
+            <div className='hero-container'>
+                <div className='hero-left'>
                     <div className='text-container'>
                         <h1>Revolutionary app that will change your life.</h1>
                         <h4>*at least we hope so</h4>
@@ -29,7 +29,7 @@ const Hero = () => {
                         Try Now
                     </Button>
                 </div>
-                <div className='right'>
+                <div className='hero-right'>
                     <div className='img-container'>
                         <img src={heroImage} alt='People playing with dogs in a dog park' />
                     </div>

@@ -1,6 +1,6 @@
 @import "../../global.scss";
 
-.mapMain {
+.map-main {
   width: 100vw;
   height: calc(100vh - 65px - 112px);
   display: flex;
@@ -33,10 +33,10 @@
     }
 
     .cluster-marker {
-      color: #fff;
+      color: #ffffff;
       font-size: 1rem;
       font-weight: 700;
-      background-color: var(--color-map-red);
+      background-color: $redColor;
       border-radius: 50%;
       display: flex;
       justify-content: center;

@@ -4,9 +4,9 @@ import { Typography } from '@mui/material';
 const ParkAbout = () => {
     const park = useSelector(state => state.park.park[0]);
     return (
-        <section className='row page-section Park-about' style={{ justifyContent: 'space-around', marginLeft: '2rem' }}>
-            <div className='col'>
-                <Typography variant='h6' style={{ marginBottom: '0.5rem', fontWeight: 600 }}>
+        <section>
+            <div>
+                <Typography variant='h6'>
                     Facilities
                 </Typography>
                 <ul>
@@ -17,7 +17,7 @@ const ParkAbout = () => {
                     })
                     }
                 </ul>
-                <div style={{ marginTop: '1rem', fontWeight: 600 }}>
+                <div>
                     Parking:
                     {park.parking
                         ? <> ✅</>
@@ -25,8 +25,8 @@ const ParkAbout = () => {
                     }
                 </div>
             </div>
-            <div className='col' style={{ marginTop: '3rem' }}>
-                <Typography variant='h6' style={{ marginBottom: '0.5rem', fontWeight: 600 }}>
+            <div>
+                <Typography variant='h6'>
                     About
                 </Typography>
                 {park.description}

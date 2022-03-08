@@ -8,9 +8,10 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { IconButton, Box, Button } from '@mui/material';
 import findId from '../../utilities/findId';
+import './addToFavorites.scss';
 
 
-const ParkAddToFavorites = () => {
+const AddToFavorites = () => {
     let id = useParams().locationId;
     const dispatch = useDispatch();
     const username = useSelector(state => state.loggedIn.username);
@@ -42,19 +43,19 @@ const ParkAddToFavorites = () => {
     }
     return (
         <>
-            <Box sx={{ display: 'inline-flex', mt: 2 }}>
+            <Box sx={{ display: 'inline-flex', mt: 1 }} className='addtofav-container'>
                 {findId(park.location_id, favorites)
-                    ? <Button style={{ color: 'var(--color-dark-grey)' }}
+                    ? <Button id='addtofav-button'
                         onClick={deleteFav}>
                         <IconButton aria-label='add to favorites' component='span'>
-                            <FavoriteIcon style={{ color: 'var(--color-map-red)' }} />
+                            <FavoriteIcon className='red' />
                         </IconButton>
                         Delete from favorites
                     </Button>
-                    : <Button style={{ color: 'var(--color-dark-grey)' }}
+                    : <Button id='addtofav-button'
                         onClick={addToFav}>
                         <IconButton aria-label='add to favorites' component='span'>
-                            <FavoriteBorderIcon style={{ color: 'var(--color-map-red)' }} />
+                            <FavoriteBorderIcon className='red' />
                         </IconButton>
                         Add to Favorites
                     </Button>
@@ -65,4 +66,4 @@ const ParkAddToFavorites = () => {
     );
 }
 
-export default ParkAddToFavorites;
+export default AddToFavorites;

@@ -1,0 +1,14 @@
+@import "../../global.scss";
+
+.user-personal {
+  max-width: 300px;
+
+  .left-page-container {
+    img {
+      border: 4px solid $lightGreyColor;
+    }
+  }
+}
+.red {
+  color: $redColor;
+}

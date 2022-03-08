@@ -1,33 +1,45 @@
 @import "../../global.scss";
 
 .park-info {
-  .info-container {
+  div {
     display: flex;
-    width: 60vw;
 
-    .map-container {
-      display: flex;
+    @include fivefifty {
       flex-direction: column;
-      margin-right: 30px;
+      width: fit-content;
     }
+
     .additional-container {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       margin-top: 15px;
+      max-height: 300px;
 
-      .col {
+      @include fivefifty {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 300px;
+      }
+      @include fourhundred {
+        width: 250px;
+      }
+
+      div {
         display: flex;
         flex-direction: column;
 
-        .row {
+        .rating {
           display: flex;
-          margin-top: 8px;
-          margin-bottom: 16px;
+          flex-direction: row;
         }
       }
-      #checkin-button {
+      .red-button {
         background: $redColor;
+
+        @include fivefifty {
+          align-self: center;
+        }
       }
     }
   }

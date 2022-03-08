@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import StarIcon from '@mui/icons-material/Star';
 import { Button } from '@mui/material';
-import ParkAddToFavorites from './ParkAddToFavorites';
+import AddToFavorites from '../parkAddToFav/AddToFavorites';
 import MapMini from '../mapMini/MapMini';
 import axios from 'axios';
 import actions from '../../redux/actions/index';
@@ -19,7 +19,7 @@ const ParkInfo = () => {
     const username = useSelector(state => state.loggedIn.username);
     const favorites = useSelector(state => state.favorites.favorites);
     const rate = [...Array(park.rate)].map((elem, i) => {
-        return <StarIcon key={i} style={{ color: 'var(--color-yelow)' }} />
+        return <StarIcon key={i} style={{ color: '#faaf00' }} />
     });
     useEffect(() => {
         dispatch(actions.fetchFavorites(username));
@@ -42,14 +42,18 @@ const ParkInfo = () => {
     }
     return (
         <div className='park-info'>
-            <div className='info-container'>
-                <div className='map-container'>
+            <h2 className='header'>{park.address}, {park.city}</h2>
+            <div>
+                <div className='left-page-container'>
                     <MapMini />
+                    {isLoggedIn && favorites &&
+                        <AddToFavorites />
+                    }
                 </div>
                 <div className='additional-container'>
-                    <div className='col'>
+                    <div>
                         Rating:
-                        <div className='row'>
+                        <div className='rating'>
                             {rate}
                         </div>
                         Open hours:
@@ -59,7 +63,7 @@ const ParkInfo = () => {
                     </div>
                     {isLoggedIn &&
                         <Button variant='contained'
-                            id='checkin-button'
+                            className='red-button'
                             onClick={checkin}
                             sx={{ mb: 2 }}>
                             Check In
@@ -67,9 +71,7 @@ const ParkInfo = () => {
                     }
                 </div>
             </div>
-            {isLoggedIn && favorites &&
-                <ParkAddToFavorites />
-            }
+
         </div>
     );
 }

@@ -10,19 +10,23 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { url } from '../../utilities/url';
 import findId from '../../utilities/findId';
+import './favoritesModal.scss';
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    maxWidth: 300,
+    width: '90vw',
+    maxWidth: '600px',
     maxHeight: '80vh',
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-    overflow: 'scroll'
+    overflow: 'scroll',
+    display: 'flex',
+    alignItems: 'center'
 };
 
 const FavoritesModal = (props) => {
@@ -47,16 +51,14 @@ const FavoritesModal = (props) => {
     }
     const alert = (locationId) => {
         toast(
-            (<div className='col'
-                style={{ alignItems: 'center' }}>
+            (<div className='col'>
                 Are you sure?
                 <Button
                     variant='outlined'
                     color='error'
                     size='small'
                     onMouseDown={() => deleteFav(locationId)}
-                    sx={{ mt: 2 }}
-                >
+                    sx={{ mt: 2 }}>
                     Delete
                 </Button>
             </div>),
@@ -73,27 +75,30 @@ const FavoritesModal = (props) => {
             </Button>
             <Modal
                 open={open}
-                onClose={handleClose}
-            >
-                <Box sx={style}>
-                    {favorites.map(el => {
-                        return (
-                            <li key={el.id} className='row'
-                                style={{ listStyle: 'none', justifyContent: 'space-between' }}>
-                                <Button component={Link} to={`/locations/${el.location_id}`}>
-                                    {findId(el.location_id, locations).address}, {findId(el.location_id, locations).city}
-                                </Button>
-                                <IconButton
-                                    onClick={() => alert(el.location_id)}
-                                    aria-label='delete from favorites'
-                                    component='span'
-                                    sx={{ ml: 1 }}>
-                                    <HighlightOffIcon style={{ color: 'var(--color-map-red)' }} />
-                                </IconButton>
-                            </li>
-                        )
-                    })
-                    }
+                onClose={handleClose}>
+                <Box sx={style} className='favorites-modal'>
+                    <ul>
+                        {favorites.map(el => {
+                            return (
+                                <li key={el.id} className='row'
+                                    style={{ listStyle: 'none', justifyContent: 'space-between' }}>
+                                    <Button component={Link} to={`/locations/${el.location_id}`}>
+                                        {findId(el.location_id, locations).address}, {findId(el.location_id, locations).city}
+                                    </Button>
+                                    <IconButton
+                                        onClick={() => alert(el.location_id)}
+                                        aria-label='delete from favorites'
+                                        component='span'
+                                        className='red'
+                                        sx={{ ml: 1 }}>
+                                        <HighlightOffIcon style={{ color: 'var(--color-map-red)' }} />
+                                    </IconButton>
+                                </li>
+                            )
+                        })
+                        }
+                    </ul>
+
                 </Box>
             </Modal>
         </div>

@@ -1,8 +1,8 @@
-import './Footer.css';
+import './footer.scss';
 
 const Footer = () => {
     return (
-        <div className='Footer'>
+        <div className='footer'>
             © Created by Lera Lysko, 2022
         </div>
     )

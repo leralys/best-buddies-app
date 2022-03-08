@@ -1,7 +1,11 @@
 $tablet: 768px;
 $mobile: 320px;
-$fiveHundred: 500px;
-$fourHundred: 400px;
+$ninefifty: 950px;
+$ninehundred: 900px;
+$seventwenty: 720px;
+$fivefifty: 550px;
+$fivehundred: 500px;
+$fourhundred: 400px;
 
 $darkGreyColor: #252525;
 $mediumGreyColor: #565656;
@@ -27,14 +31,38 @@ $redColor: #c64142;
   }
 }
 
-@mixin fiveHundred {
-  @media (max-width: #{$fiveHundred}) {
+@mixin ninefifty {
+  @media (max-width: #{$ninefifty}) {
     @content;
   }
 }
 
-@mixin fourHundred {
-  @media (max-width: #{$fourHundred}) {
+@mixin ninehundred {
+  @media (max-width: #{$ninehundred}) {
+    @content;
+  }
+}
+
+@mixin seventwenty {
+  @media (max-width: #{$seventwenty}) {
+    @content;
+  }
+}
+
+@mixin fivefifty {
+  @media (max-width: #{$fivefifty}) {
+    @content;
+  }
+}
+
+@mixin fivehundred {
+  @media (max-width: #{$fivehundred}) {
+    @content;
+  }
+}
+
+@mixin fourhundred {
+  @media (max-width: #{$fourhundred}) {
     @content;
   }
 }
